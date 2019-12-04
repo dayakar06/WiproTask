@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6B4A22902398211200A247B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A228F2398211200A247B8 /* AppDelegate.swift */; };
-		6B4A22922398211200A247B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22912398211200A247B8 /* ViewController.swift */; };
-		6B4A22952398211200A247B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B4A22932398211200A247B8 /* Main.storyboard */; };
 		6B4A22982398211200A247B8 /* WiproTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22962398211200A247B8 /* WiproTask.xcdatamodeld */; };
 		6B4A229A2398211700A247B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B4A22992398211700A247B8 /* Assets.xcassets */; };
 		6B4A229D2398211700A247B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B4A229B2398211700A247B8 /* LaunchScreen.storyboard */; };
 		6B4A22A82398211800A247B8 /* WiproTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22A72398211800A247B8 /* WiproTaskTests.swift */; };
+		6B4A22C22398369300A247B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22C02398369300A247B8 /* ViewController.swift */; };
+		6B4A22C32398369300A247B8 /* FactsRowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22C12398369300A247B8 /* FactsRowsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +29,6 @@
 /* Begin PBXFileReference section */
 		6B4A228C2398211200A247B8 /* WiproTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiproTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B4A228F2398211200A247B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6B4A22912398211200A247B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6B4A22942398211200A247B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B4A22972398211200A247B8 /* WiproTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WiproTask.xcdatamodel; sourceTree = "<group>"; };
 		6B4A22992398211700A247B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B4A229C2398211700A247B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +36,8 @@
 		6B4A22A32398211800A247B8 /* WiproTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiproTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B4A22A72398211800A247B8 /* WiproTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiproTaskTests.swift; sourceTree = "<group>"; };
 		6B4A22A92398211800A247B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B4A22C02398369300A247B8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B4A22C12398369300A247B8 /* FactsRowsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsRowsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				6B4A228F2398211200A247B8 /* AppDelegate.swift */,
-				6B4A22912398211200A247B8 /* ViewController.swift */,
-				6B4A22932398211200A247B8 /* Main.storyboard */,
 				6B4A22992398211700A247B8 /* Assets.xcassets */,
 				6B4A229B2398211700A247B8 /* LaunchScreen.storyboard */,
+				6B4A22C12398369300A247B8 /* FactsRowsTableViewCell.swift */,
+				6B4A22C02398369300A247B8 /* ViewController.swift */,
 				6B4A229E2398211700A247B8 /* Info.plist */,
 				6B4A22962398211200A247B8 /* WiproTask.xcdatamodeld */,
 			);
@@ -182,7 +182,6 @@
 			files = (
 				6B4A229D2398211700A247B8 /* LaunchScreen.storyboard in Resources */,
 				6B4A229A2398211700A247B8 /* Assets.xcassets in Resources */,
-				6B4A22952398211200A247B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +199,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B4A22922398211200A247B8 /* ViewController.swift in Sources */,
+				6B4A22C22398369300A247B8 /* ViewController.swift in Sources */,
 				6B4A22902398211200A247B8 /* AppDelegate.swift in Sources */,
+				6B4A22C32398369300A247B8 /* FactsRowsTableViewCell.swift in Sources */,
 				6B4A22982398211200A247B8 /* WiproTask.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,14 +225,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6B4A22932398211200A247B8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6B4A22942398211200A247B8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6B4A229B2398211700A247B8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
