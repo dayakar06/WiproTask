@@ -68,6 +68,7 @@ class FactsRowsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = .clear
+        
         self.detailContainerView.backgroundColor = .white
         self.detailContainerView.layer.cornerRadius = 5
         

@@ -11,6 +11,7 @@ import UIKit
 class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     fileprivate let factsCellId = "FactCell"
+    fileprivate let noDataAvailable = "NoDataAvaiable"
     
     var tableView : UITableView = {
         let tableView = UITableView()
@@ -33,11 +34,12 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var factsApiCalling = false
     var dataRefreshControl: UIRefreshControl?
     
+    let reachability = Reachability()!
+    
     //MARK:- View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.prefersLargeTitles = true
         //TODO: Tableview customization
         self.view.addSubview(self.tableView)
         self.view.backgroundColor = .groupTableViewBackground
@@ -51,6 +53,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.delegate = self
         
         self.tableView.register(FactsRowsTableViewCell.self, forCellReuseIdentifier: self.factsCellId)
+        self.tableView.register(NoDataAvaiableTableViewCell.self, forCellReuseIdentifier: self.noDataAvailable)
         //TODO: Updating with refersh controller
         self.dataRefreshControl = UIRefreshControl()
         self.dataRefreshControl?.addTarget(self, action: #selector(self.refreshWeatherData(_:)), for: .valueChanged)
@@ -67,6 +70,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //TODO: Get facts data
     func getFactsData(){
+        self.facts = Facts(title: "", rows: [Rows]())
         DispatchQueue.global(qos: .utility).async {
             self.getData()
         }
@@ -75,6 +79,14 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //MARK:- Webservices
     func getData(){
         if self.factsApiCalling{
+            return
+        }
+        if !reachability.isReachable{
+            DispatchQueue.main.async {
+                self.presentAlert(withTitle: CustomMessages.noInternet, message: nil, complitionHandler: {[weak self] in
+                    self?.dataRefreshControl?.endRefreshing()
+                })
+            }
             return
         }
         self.factsApiCalling = true
@@ -106,22 +118,30 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK:- TableView delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.facts.rows?.count == 0{
+            return 1
+        }
         return self.facts.rows?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.facts.rows?.count == 0{
+            return self.tableView.frame.height
+        }
         return UITableView.automaticDimension
     }
     
     //MARK:- TableViwe datasouce methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell : FactsRowsTableViewCell = tableView.dequeueReusableCell(withIdentifier: factsCellId, for: indexPath) as? FactsRowsTableViewCell,
-            indexPath.row < (self.facts.rows?.count ?? 0),
-            let factDetails = self.facts.rows?[indexPath.row]{
+        if self.facts.rows?.count ?? 0 > 0, indexPath.row < (self.facts.rows?.count ?? 0), let factDetails = self.facts.rows?[indexPath.row], let cell : FactsRowsTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.factsCellId, for: indexPath) as? FactsRowsTableViewCell{
             cell.factDetails = factDetails
             cell.selectionStyle = .none
             cell.detailContainerTopAnchorSpace.constant = indexPath.row == 0 ? 10 : 5
             cell.detailContainerBottomAnchorSpace.constant = indexPath.row == self.facts.rows?.count ? -10 : -5
+            return cell
+        }
+        else if self.facts.rows?.count == 0, let cell : NoDataAvaiableTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.noDataAvailable, for: indexPath) as? NoDataAvaiableTableViewCell{
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()

@@ -22,12 +22,13 @@ extension UIViewController {
         }
     }
     
-    func presentAlert(withTitle title: String, message : String) {
+    func presentAlert(withTitle title: String?, message : String?, complitionHandler: @escaping () -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { action in
             #if DEBUG
                 print("You've pressed OK Button")
             #endif
+            complitionHandler()
         }
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)

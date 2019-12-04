@@ -16,6 +16,8 @@ struct APIs {
 
 //Custom messages
 struct CustomMessages {
+    static let noInternet = "No internet connect.Please check internet connection and Please try again!"
+    static let noData = "No data available,\nPull to refresh the data...!"
     static let defaultResponseError = "Something went wrong, Please try again!"
     static let dataParseError = "Something went wrong while data parsing, Plese try again!"
     static let noDetails = "Details are not available for this fact"

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6B335C2C23980F5D0041FA37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B335C2B23980F5D0041FA37 /* Assets.xcassets */; };
 		6B4A22B923982AB000A247B8 /* WiproTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22B823982AB000A247B8 /* WiproTaskTests.swift */; };
+		6B4A22D22398455D00A247B8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22D12398455D00A247B8 /* Reachability.swift */; };
+		6B4A22D623984B4800A247B8 /* NoDataAvaiableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22D523984B4800A247B8 /* NoDataAvaiableTableViewCell.swift */; };
 		6BD116E22396C98C005F7A4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E12396C98C005F7A4E /* AppDelegate.swift */; };
 		6BD116E42396C98C005F7A4E /* FactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E32396C98C005F7A4E /* FactsViewController.swift */; };
 		6BD116EA2396C98C005F7A4E /* WiproTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E82396C98C005F7A4E /* WiproTask.xcdatamodeld */; };
@@ -37,6 +39,8 @@
 		6B4A22B623982AB000A247B8 /* WiproTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiproTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B4A22B823982AB000A247B8 /* WiproTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiproTaskTests.swift; sourceTree = "<group>"; };
 		6B4A22BA23982AB000A247B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B4A22D12398455D00A247B8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		6B4A22D523984B4800A247B8 /* NoDataAvaiableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataAvaiableTableViewCell.swift; sourceTree = "<group>"; };
 		6BD116DE2396C98C005F7A4E /* WiproTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiproTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD116E12396C98C005F7A4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BD116E32396C98C005F7A4E /* FactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				6BD117212396E3F3005F7A4E /* FactsRowsTableViewCell.swift */,
+				6B4A22D523984B4800A247B8 /* NoDataAvaiableTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			children = (
 				6BD117192396CB31005F7A4E /* APIHelper.swift */,
 				6BD1171B2396CBA7005F7A4E /* Constants.swift */,
+				6B4A22D12398455D00A247B8 /* Reachability.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -330,8 +336,10 @@
 				6BD1171C2396CBA7005F7A4E /* Constants.swift in Sources */,
 				6BD1171E2396CD81005F7A4E /* Facts.swift in Sources */,
 				6BD1171A2396CB31005F7A4E /* APIHelper.swift in Sources */,
+				6B4A22D623984B4800A247B8 /* NoDataAvaiableTableViewCell.swift in Sources */,
 				6BD116E42396C98C005F7A4E /* FactsViewController.swift in Sources */,
 				6BD116E22396C98C005F7A4E /* AppDelegate.swift in Sources */,
+				6B4A22D22398455D00A247B8 /* Reachability.swift in Sources */,
 				6BD117202396CE03005F7A4E /* UIViewController+Expentions.swift in Sources */,
 				6BD117222396E3F3005F7A4E /* FactsRowsTableViewCell.swift in Sources */,
 				6BD116EA2396C98C005F7A4E /* WiproTask.xcdatamodeld in Sources */,
