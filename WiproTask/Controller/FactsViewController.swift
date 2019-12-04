@@ -2,13 +2,13 @@
 //  ViewController.swift
 //  WiproTask
 //
-//  Created by Dayakar Reddy on 03/12/19.
+//  Created by Dayakar Reddy on 0/12/19.
 //  Copyright © 2019 dayakar. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     fileprivate let factsCellId = "FactCell"
     

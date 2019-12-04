@@ -3,112 +3,208 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B4A22902398211200A247B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A228F2398211200A247B8 /* AppDelegate.swift */; };
-		6B4A22982398211200A247B8 /* WiproTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22962398211200A247B8 /* WiproTask.xcdatamodeld */; };
-		6B4A229A2398211700A247B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B4A22992398211700A247B8 /* Assets.xcassets */; };
-		6B4A229D2398211700A247B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B4A229B2398211700A247B8 /* LaunchScreen.storyboard */; };
-		6B4A22A82398211800A247B8 /* WiproTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22A72398211800A247B8 /* WiproTaskTests.swift */; };
-		6B4A22C22398369300A247B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22C02398369300A247B8 /* ViewController.swift */; };
-		6B4A22C32398369300A247B8 /* FactsRowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22C12398369300A247B8 /* FactsRowsTableViewCell.swift */; };
+		6B335C2C23980F5D0041FA37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B335C2B23980F5D0041FA37 /* Assets.xcassets */; };
+		6B4A22B923982AB000A247B8 /* WiproTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22B823982AB000A247B8 /* WiproTaskTests.swift */; };
+		6BD116E22396C98C005F7A4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E12396C98C005F7A4E /* AppDelegate.swift */; };
+		6BD116E42396C98C005F7A4E /* FactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E32396C98C005F7A4E /* FactsViewController.swift */; };
+		6BD116EA2396C98C005F7A4E /* WiproTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E82396C98C005F7A4E /* WiproTask.xcdatamodeld */; };
+		6BD116EF2396C991005F7A4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD116ED2396C991005F7A4E /* LaunchScreen.storyboard */; };
+		6BD1171A2396CB31005F7A4E /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD117192396CB31005F7A4E /* APIHelper.swift */; };
+		6BD1171C2396CBA7005F7A4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1171B2396CBA7005F7A4E /* Constants.swift */; };
+		6BD1171E2396CD81005F7A4E /* Facts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1171D2396CD81005F7A4E /* Facts.swift */; };
+		6BD117202396CE03005F7A4E /* UIViewController+Expentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1171F2396CE03005F7A4E /* UIViewController+Expentions.swift */; };
+		6BD117222396E3F3005F7A4E /* FactsRowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD117212396E3F3005F7A4E /* FactsRowsTableViewCell.swift */; };
+		8A95A343B84134902C94D143 /* Pods_WiproTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D185AA5CFCBAAFBC9A3EF864 /* Pods_WiproTask.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6B4A22A42398211800A247B8 /* PBXContainerItemProxy */ = {
+		6B4A22BB23982AB000A247B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6B4A22842398211200A247B8 /* Project object */;
+			containerPortal = 6BD116D62396C98C005F7A4E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6B4A228B2398211200A247B8;
+			remoteGlobalIDString = 6BD116DD2396C98C005F7A4E;
 			remoteInfo = WiproTask;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B4A228C2398211200A247B8 /* WiproTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiproTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B4A228F2398211200A247B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6B4A22972398211200A247B8 /* WiproTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WiproTask.xcdatamodel; sourceTree = "<group>"; };
-		6B4A22992398211700A247B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6B4A229C2398211700A247B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6B4A229E2398211700A247B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B4A22A32398211800A247B8 /* WiproTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiproTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B4A22A72398211800A247B8 /* WiproTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiproTaskTests.swift; sourceTree = "<group>"; };
-		6B4A22A92398211800A247B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B4A22C02398369300A247B8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6B4A22C12398369300A247B8 /* FactsRowsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsRowsTableViewCell.swift; sourceTree = "<group>"; };
+		5B1A5BB9CAD9D35F5BC6D674 /* Pods-WiproTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiproTask.release.xcconfig"; path = "Target Support Files/Pods-WiproTask/Pods-WiproTask.release.xcconfig"; sourceTree = "<group>"; };
+		6B335C2B23980F5D0041FA37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B4A22B623982AB000A247B8 /* WiproTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiproTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B4A22B823982AB000A247B8 /* WiproTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiproTaskTests.swift; sourceTree = "<group>"; };
+		6B4A22BA23982AB000A247B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BD116DE2396C98C005F7A4E /* WiproTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiproTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BD116E12396C98C005F7A4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6BD116E32396C98C005F7A4E /* FactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewController.swift; sourceTree = "<group>"; };
+		6BD116E92396C98C005F7A4E /* WiproTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WiproTask.xcdatamodel; sourceTree = "<group>"; };
+		6BD116EE2396C991005F7A4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6BD116F02396C991005F7A4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BD117192396CB31005F7A4E /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		6BD1171B2396CBA7005F7A4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6BD1171D2396CD81005F7A4E /* Facts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facts.swift; sourceTree = "<group>"; };
+		6BD1171F2396CE03005F7A4E /* UIViewController+Expentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Expentions.swift"; sourceTree = "<group>"; };
+		6BD117212396E3F3005F7A4E /* FactsRowsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsRowsTableViewCell.swift; sourceTree = "<group>"; };
+		D185AA5CFCBAAFBC9A3EF864 /* Pods_WiproTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WiproTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9900E85CAD890FAC18FA63C /* Pods-WiproTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiproTask.debug.xcconfig"; path = "Target Support Files/Pods-WiproTask/Pods-WiproTask.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6B4A22892398211200A247B8 /* Frameworks */ = {
+		6B4A22B323982AB000A247B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B4A22A02398211800A247B8 /* Frameworks */ = {
+		6BD116DB2396C98C005F7A4E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A95A343B84134902C94D143 /* Pods_WiproTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6B4A22832398211200A247B8 = {
+		207005AC4CF7400B1BE9DD42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B4A228E2398211200A247B8 /* WiproTask */,
-				6B4A22A62398211800A247B8 /* WiproTaskTests */,
-				6B4A228D2398211200A247B8 /* Products */,
+				D185AA5CFCBAAFBC9A3EF864 /* Pods_WiproTask.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B335C2A239808C60041FA37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6BD117212396E3F3005F7A4E /* FactsRowsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6B4A22B723982AB000A247B8 /* WiproTaskTests */ = {
+			isa = PBXGroup;
+			children = (
+				6B4A22B823982AB000A247B8 /* WiproTaskTests.swift */,
+				6B4A22BA23982AB000A247B8 /* Info.plist */,
+			);
+			path = WiproTaskTests;
+			sourceTree = "<group>";
+		};
+		6BD116D52396C98C005F7A4E = {
+			isa = PBXGroup;
+			children = (
+				6BD116E02396C98C005F7A4E /* WiproTask */,
+				6B4A22B723982AB000A247B8 /* WiproTaskTests */,
+				6BD116DF2396C98C005F7A4E /* Products */,
+				F8CCCCFDDFAA7549409FAB9D /* Pods */,
+				207005AC4CF7400B1BE9DD42 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		6B4A228D2398211200A247B8 /* Products */ = {
+		6BD116DF2396C98C005F7A4E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B4A228C2398211200A247B8 /* WiproTask.app */,
-				6B4A22A32398211800A247B8 /* WiproTaskTests.xctest */,
+				6BD116DE2396C98C005F7A4E /* WiproTask.app */,
+				6B4A22B623982AB000A247B8 /* WiproTaskTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6B4A228E2398211200A247B8 /* WiproTask */ = {
+		6BD116E02396C98C005F7A4E /* WiproTask */ = {
 			isa = PBXGroup;
 			children = (
-				6B4A228F2398211200A247B8 /* AppDelegate.swift */,
-				6B4A22992398211700A247B8 /* Assets.xcassets */,
-				6B4A229B2398211700A247B8 /* LaunchScreen.storyboard */,
-				6B4A22C12398369300A247B8 /* FactsRowsTableViewCell.swift */,
-				6B4A22C02398369300A247B8 /* ViewController.swift */,
-				6B4A229E2398211700A247B8 /* Info.plist */,
-				6B4A22962398211200A247B8 /* WiproTask.xcdatamodeld */,
+				6BD116ED2396C991005F7A4E /* LaunchScreen.storyboard */,
+				6B335C2B23980F5D0041FA37 /* Assets.xcassets */,
+				6BD116E12396C98C005F7A4E /* AppDelegate.swift */,
+				6BD117262396FC6D005F7A4E /* Model */,
+				6B335C2A239808C60041FA37 /* View */,
+				6BD117252396FC60005F7A4E /* Controller */,
+				6BD117232396FC32005F7A4E /* Helper */,
+				6BD117242396FC3D005F7A4E /* Extenstions */,
+				6BD116F02396C991005F7A4E /* Info.plist */,
+				6BD116E82396C98C005F7A4E /* WiproTask.xcdatamodeld */,
 			);
 			path = WiproTask;
 			sourceTree = "<group>";
 		};
-		6B4A22A62398211800A247B8 /* WiproTaskTests */ = {
+		6BD117232396FC32005F7A4E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				6B4A22A72398211800A247B8 /* WiproTaskTests.swift */,
-				6B4A22A92398211800A247B8 /* Info.plist */,
+				6BD117192396CB31005F7A4E /* APIHelper.swift */,
+				6BD1171B2396CBA7005F7A4E /* Constants.swift */,
 			);
-			path = WiproTaskTests;
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		6BD117242396FC3D005F7A4E /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				6BD1171F2396CE03005F7A4E /* UIViewController+Expentions.swift */,
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		6BD117252396FC60005F7A4E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6BD116E32396C98C005F7A4E /* FactsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6BD117262396FC6D005F7A4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6BD1171D2396CD81005F7A4E /* Facts.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8CCCCFDDFAA7549409FAB9D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9900E85CAD890FAC18FA63C /* Pods-WiproTask.debug.xcconfig */,
+				5B1A5BB9CAD9D35F5BC6D674 /* Pods-WiproTask.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6B4A228B2398211200A247B8 /* WiproTask */ = {
+		6B4A22B523982AB000A247B8 /* WiproTaskTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B4A22AC2398211800A247B8 /* Build configuration list for PBXNativeTarget "WiproTask" */;
+			buildConfigurationList = 6B4A22BF23982AB000A247B8 /* Build configuration list for PBXNativeTarget "WiproTaskTests" */;
 			buildPhases = (
-				6B4A22882398211200A247B8 /* Sources */,
-				6B4A22892398211200A247B8 /* Frameworks */,
-				6B4A228A2398211200A247B8 /* Resources */,
+				6B4A22B223982AB000A247B8 /* Sources */,
+				6B4A22B323982AB000A247B8 /* Frameworks */,
+				6B4A22B423982AB000A247B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B4A22BC23982AB000A247B8 /* PBXTargetDependency */,
+			);
+			name = WiproTaskTests;
+			productName = WiproTaskTests;
+			productReference = 6B4A22B623982AB000A247B8 /* WiproTaskTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6BD116DD2396C98C005F7A4E /* WiproTask */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BD116F32396C991005F7A4E /* Build configuration list for PBXNativeTarget "WiproTask" */;
+			buildPhases = (
+				0F98415FA4986AC4020D1747 /* [CP] Check Pods Manifest.lock */,
+				6BD116DA2396C98C005F7A4E /* Sources */,
+				6BD116DB2396C98C005F7A4E /* Frameworks */,
+				6BD116DC2396C98C005F7A4E /* Resources */,
+				2CF047A42E7FBC036AFDB04B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -116,47 +212,29 @@
 			);
 			name = WiproTask;
 			productName = WiproTask;
-			productReference = 6B4A228C2398211200A247B8 /* WiproTask.app */;
+			productReference = 6BD116DE2396C98C005F7A4E /* WiproTask.app */;
 			productType = "com.apple.product-type.application";
-		};
-		6B4A22A22398211800A247B8 /* WiproTaskTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6B4A22AF2398211800A247B8 /* Build configuration list for PBXNativeTarget "WiproTaskTests" */;
-			buildPhases = (
-				6B4A229F2398211800A247B8 /* Sources */,
-				6B4A22A02398211800A247B8 /* Frameworks */,
-				6B4A22A12398211800A247B8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6B4A22A52398211800A247B8 /* PBXTargetDependency */,
-			);
-			name = WiproTaskTests;
-			productName = WiproTaskTests;
-			productReference = 6B4A22A32398211800A247B8 /* WiproTaskTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6B4A22842398211200A247B8 /* Project object */ = {
+		6BD116D62396C98C005F7A4E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = dayakar;
 				TargetAttributes = {
-					6B4A228B2398211200A247B8 = {
+					6B4A22B523982AB000A247B8 = {
 						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 6BD116DD2396C98C005F7A4E;
 					};
-					6B4A22A22398211800A247B8 = {
+					6BD116DD2396C98C005F7A4E = {
 						CreatedOnToolsVersion = 10.3;
-						TestTargetID = 6B4A228B2398211200A247B8;
 					};
 				};
 			};
-			buildConfigurationList = 6B4A22872398211200A247B8 /* Build configuration list for PBXProject "WiproTask" */;
+			buildConfigurationList = 6BD116D92396C98C005F7A4E /* Build configuration list for PBXProject "WiproTask" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -164,71 +242,117 @@
 				en,
 				Base,
 			);
-			mainGroup = 6B4A22832398211200A247B8;
-			productRefGroup = 6B4A228D2398211200A247B8 /* Products */;
+			mainGroup = 6BD116D52396C98C005F7A4E;
+			productRefGroup = 6BD116DF2396C98C005F7A4E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B4A228B2398211200A247B8 /* WiproTask */,
-				6B4A22A22398211800A247B8 /* WiproTaskTests */,
+				6BD116DD2396C98C005F7A4E /* WiproTask */,
+				6B4A22B523982AB000A247B8 /* WiproTaskTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6B4A228A2398211200A247B8 /* Resources */ = {
+		6B4A22B423982AB000A247B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B4A229D2398211700A247B8 /* LaunchScreen.storyboard in Resources */,
-				6B4A229A2398211700A247B8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B4A22A12398211800A247B8 /* Resources */ = {
+		6BD116DC2396C98C005F7A4E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B335C2C23980F5D0041FA37 /* Assets.xcassets in Resources */,
+				6BD116EF2396C991005F7A4E /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F98415FA4986AC4020D1747 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WiproTask-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CF047A42E7FBC036AFDB04B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WiproTask/Pods-WiproTask-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WiproTask/Pods-WiproTask-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WiproTask/Pods-WiproTask-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		6B4A22882398211200A247B8 /* Sources */ = {
+		6B4A22B223982AB000A247B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B4A22C22398369300A247B8 /* ViewController.swift in Sources */,
-				6B4A22902398211200A247B8 /* AppDelegate.swift in Sources */,
-				6B4A22C32398369300A247B8 /* FactsRowsTableViewCell.swift in Sources */,
-				6B4A22982398211200A247B8 /* WiproTask.xcdatamodeld in Sources */,
+				6B4A22B923982AB000A247B8 /* WiproTaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B4A229F2398211800A247B8 /* Sources */ = {
+		6BD116DA2396C98C005F7A4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B4A22A82398211800A247B8 /* WiproTaskTests.swift in Sources */,
+				6BD1171C2396CBA7005F7A4E /* Constants.swift in Sources */,
+				6BD1171E2396CD81005F7A4E /* Facts.swift in Sources */,
+				6BD1171A2396CB31005F7A4E /* APIHelper.swift in Sources */,
+				6BD116E42396C98C005F7A4E /* FactsViewController.swift in Sources */,
+				6BD116E22396C98C005F7A4E /* AppDelegate.swift in Sources */,
+				6BD117202396CE03005F7A4E /* UIViewController+Expentions.swift in Sources */,
+				6BD117222396E3F3005F7A4E /* FactsRowsTableViewCell.swift in Sources */,
+				6BD116EA2396C98C005F7A4E /* WiproTask.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6B4A22A52398211800A247B8 /* PBXTargetDependency */ = {
+		6B4A22BC23982AB000A247B8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B4A228B2398211200A247B8 /* WiproTask */;
-			targetProxy = 6B4A22A42398211800A247B8 /* PBXContainerItemProxy */;
+			target = 6BD116DD2396C98C005F7A4E /* WiproTask */;
+			targetProxy = 6B4A22BB23982AB000A247B8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6B4A229B2398211700A247B8 /* LaunchScreen.storyboard */ = {
+		6BD116ED2396C991005F7A4E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6B4A229C2398211700A247B8 /* Base */,
+				6BD116EE2396C991005F7A4E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -236,7 +360,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		6B4A22AA2398211800A247B8 /* Debug */ = {
+		6B4A22BD23982AB000A247B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 978W5J2WK5;
+				INFOPLIST_FILE = WiproTaskTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AuprimeBlockChain.WiproTaskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WiproTask.app/WiproTask";
+			};
+			name = Debug;
+		};
+		6B4A22BE23982AB000A247B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 978W5J2WK5;
+				INFOPLIST_FILE = WiproTaskTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AuprimeBlockChain.WiproTaskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WiproTask.app/WiproTask";
+			};
+			name = Release;
+		};
+		6BD116F12396C991005F7A4E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -297,7 +461,7 @@
 			};
 			name = Debug;
 		};
-		6B4A22AB2398211800A247B8 /* Release */ = {
+		6BD116F22396C991005F7A4E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -352,110 +516,72 @@
 			};
 			name = Release;
 		};
-		6B4A22AD2398211800A247B8 /* Debug */ = {
+		6BD116F42396C991005F7A4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9900E85CAD890FAC18FA63C /* Pods-WiproTask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 978W5J2WK5;
 				INFOPLIST_FILE = WiproTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AuprimeBlockChain.WiproTask;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AuprimeBlockChain.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		6B4A22AE2398211800A247B8 /* Release */ = {
+		6BD116F52396C991005F7A4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B1A5BB9CAD9D35F5BC6D674 /* Pods-WiproTask.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 978W5J2WK5;
 				INFOPLIST_FILE = WiproTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AuprimeBlockChain.WiproTask;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AuprimeBlockChain.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		6B4A22B02398211800A247B8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 978W5J2WK5;
-				INFOPLIST_FILE = WiproTaskTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AuprimeBlockChain.WiproTaskTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WiproTask.app/WiproTask";
-			};
-			name = Debug;
-		};
-		6B4A22B12398211800A247B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 978W5J2WK5;
-				INFOPLIST_FILE = WiproTaskTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AuprimeBlockChain.WiproTaskTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WiproTask.app/WiproTask";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6B4A22872398211200A247B8 /* Build configuration list for PBXProject "WiproTask" */ = {
+		6B4A22BF23982AB000A247B8 /* Build configuration list for PBXNativeTarget "WiproTaskTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B4A22AA2398211800A247B8 /* Debug */,
-				6B4A22AB2398211800A247B8 /* Release */,
+				6B4A22BD23982AB000A247B8 /* Debug */,
+				6B4A22BE23982AB000A247B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B4A22AC2398211800A247B8 /* Build configuration list for PBXNativeTarget "WiproTask" */ = {
+		6BD116D92396C98C005F7A4E /* Build configuration list for PBXProject "WiproTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B4A22AD2398211800A247B8 /* Debug */,
-				6B4A22AE2398211800A247B8 /* Release */,
+				6BD116F12396C991005F7A4E /* Debug */,
+				6BD116F22396C991005F7A4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B4A22AF2398211800A247B8 /* Build configuration list for PBXNativeTarget "WiproTaskTests" */ = {
+		6BD116F32396C991005F7A4E /* Build configuration list for PBXNativeTarget "WiproTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B4A22B02398211800A247B8 /* Debug */,
-				6B4A22B12398211800A247B8 /* Release */,
+				6BD116F42396C991005F7A4E /* Debug */,
+				6BD116F52396C991005F7A4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -463,17 +589,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		6B4A22962398211200A247B8 /* WiproTask.xcdatamodeld */ = {
+		6BD116E82396C98C005F7A4E /* WiproTask.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				6B4A22972398211200A247B8 /* WiproTask.xcdatamodel */,
+				6BD116E92396C98C005F7A4E /* WiproTask.xcdatamodel */,
 			);
-			currentVersion = 6B4A22972398211200A247B8 /* WiproTask.xcdatamodel */;
+			currentVersion = 6BD116E92396C98C005F7A4E /* WiproTask.xcdatamodel */;
 			path = WiproTask.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 6B4A22842398211200A247B8 /* Project object */;
+	rootObject = 6BD116D62396C98C005F7A4E /* Project object */;
 }
