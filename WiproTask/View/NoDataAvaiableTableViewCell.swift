@@ -9,7 +9,7 @@
 import UIKit
 
 class NoDataAvaiableTableViewCell: UITableViewCell {
-
+    
     let statusLabel = UILabel()
     let detailContainerView = UIView()
     
@@ -17,24 +17,23 @@ class NoDataAvaiableTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = .clear
-        
+        //Customizing the details container view
         self.detailContainerView.backgroundColor = .white
         self.detailContainerView.layer.cornerRadius = 5
-        
+        //Customizing the status lebel
         self.statusLabel.numberOfLines = 0
         self.statusLabel.textAlignment = .center
         self.statusLabel.lineBreakMode = .byWordWrapping
         self.statusLabel.text = CustomMessages.noData
         self.statusLabel.textColor = .darkText
         self.statusLabel.font = UIFont.boldSystemFont(ofSize: 26.0)
-        
+        //Disabling the translates autoresiging maks into constraints functionality.
         self.statusLabel.translatesAutoresizingMaskIntoConstraints = false
         self.detailContainerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        //Adding view to tableviewcell
         self.detailContainerView.addSubview(self.statusLabel)
         addSubview(self.detailContainerView)
-        
-        // lets set up some constraints for our label
+        //Adding constriants/Constarint setup and activating them.
         let constraints = [
             //status label constraints
             self.statusLabel.leadingAnchor.constraint(equalTo: self.detailContainerView.leadingAnchor, constant: 10.0),

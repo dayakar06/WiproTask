@@ -24,6 +24,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var facts = Facts(){
         didSet{
+            //Updating the view title and reloading the tableview
             DispatchQueue.main.async {
                 self.title = self.facts.title ?? ""
                 self.tableView.reloadData()
@@ -78,9 +79,11 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK:- Webservices
     func getData(){
+        //Stoping from calling the API incase api calling currently.
         if self.factsApiCalling{
             return
         }
+        //Checking the internet connectivity
         if !reachability.isReachable{
             DispatchQueue.main.async {
                 self.presentAlert(withTitle: CustomMessages.noInternet, message: nil, complitionHandler: {[weak self] in
@@ -92,13 +95,15 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.factsApiCalling = true
         APIHelper.shared.codableGetRequestWith(apiName: APIs.facts, headers: ["Content-Type": "application/json"]) { [weak self] (status, data, message) in
             self?.factsApiCalling = false
+            //Ending the refresh controller
             DispatchQueue.main.async {
                 self?.dataRefreshControl?.endRefreshing()
             }
+            //On susccessful api call reponse paring the data.
             if status{
                 if let facts : Facts = try? JSONDecoder().decode(Facts.self, from: data!){
                     #if DEBUG
-                        print("Facts Count = \(facts.rows?.count ?? 0)")
+                    print("Facts Count = \(facts.rows?.count ?? 0)")
                     #endif
                     self?.facts = facts
                 }
@@ -108,9 +113,10 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     }
                 }
             }
+                //On API call failure showing the error message
             else{
                 DispatchQueue.main.async {
-                    self?.showToast(message: CustomMessages.defaultResponseError)
+                    self?.showToast(message: message)
                 }
             }
         }
@@ -118,6 +124,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK:- TableView delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //Incase of facts not available returning the 1 to show the no data available cell.
         if self.facts.rows?.count == 0{
             return 1
         }
@@ -125,6 +132,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //Incase of facts data not available setting height equals to the tableview
         if self.facts.rows?.count == 0{
             return self.tableView.frame.height
         }
@@ -133,6 +141,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK:- TableViwe datasouce methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Incase facts data available showing the facts data.
         if self.facts.rows?.count ?? 0 > 0, indexPath.row < (self.facts.rows?.count ?? 0), let factDetails = self.facts.rows?[indexPath.row], let cell : FactsRowsTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.factsCellId, for: indexPath) as? FactsRowsTableViewCell{
             cell.factDetails = factDetails
             cell.selectionStyle = .none
@@ -140,6 +149,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.detailContainerBottomAnchorSpace.constant = indexPath.row == self.facts.rows?.count ? -10 : -5
             return cell
         }
+            //Incase of facts not receied or internet connection issue, showing the no data available cell.
         else if self.facts.rows?.count == 0, let cell : NoDataAvaiableTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.noDataAvailable, for: indexPath) as? NoDataAvaiableTableViewCell{
             cell.selectionStyle = .none
             return cell

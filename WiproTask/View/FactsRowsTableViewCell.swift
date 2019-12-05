@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 class FactsRowsTableViewCell: UITableViewCell {
-
+    
     let factImageView = UIImageView()
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
@@ -42,12 +42,14 @@ class FactsRowsTableViewCell: UITableViewCell {
                 self.titleLabel.text = self.factDetails.title ?? "--"
                 self.descriptionLabel.text = self.factDetails.description ?? "--"
             }
+            //Customizing the imagevuew >> Incase image url is not avaialble hiding the imageview from the tableview cell lese showing the respected image using url.
             self.factImageView.image = #imageLiteral(resourceName: "imageNotFound")
             if let imageUrl : String = self.factDetails.imageHref, !imageUrl.isEmpty, let url = URL.init(string: imageUrl) {
+                //SDWebimageview customising
                 self.factImageView.sd_setShowActivityIndicatorView(true)
                 self.factImageView.sd_setIndicatorStyle(.gray)
                 self.factImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "imageNotFound"), options: .queryDataWhenInMemory)
-                
+                //deactiving image height and bottom sapce constaints and adding new constraints
                 self.imageViewHeight.isActive = false
                 self.imageViewBottomSpace.isActive = false
                 self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalTo: factImageView.widthAnchor, multiplier: 2.1/4.0)
@@ -55,6 +57,7 @@ class FactsRowsTableViewCell: UITableViewCell {
                 NSLayoutConstraint.activate([self.imageViewHeight, self.imageViewBottomSpace])
             }
             else{
+                //deactiving image height and bottom sapce constaints and adding new constraints
                 self.imageViewHeight.isActive = false
                 self.imageViewBottomSpace.isActive = false
                 self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalToConstant: 0)
@@ -68,31 +71,30 @@ class FactsRowsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = .clear
-        
+        //Customizing the view
         self.detailContainerView.backgroundColor = .white
         self.detailContainerView.layer.cornerRadius = 5
-        
+        //Customizing the imageview
         self.factImageView.layer.cornerRadius = 5
         self.factImageView.clipsToBounds = true
-        
+        //Customizing the title label
         self.titleLabel.numberOfLines = 0
         self.titleLabel.lineBreakMode = .byWordWrapping
         self.titleLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
-        
+        //Customizing the description label
         self.descriptionLabel.numberOfLines = 0
         self.descriptionLabel.lineBreakMode = .byWordWrapping
-        
+        //Disabling the translates autoresiging maks into constraints functionality
         self.factImageView.translatesAutoresizingMaskIntoConstraints = false
         self.detailContainerView.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+        //Adding view to tableviewcell
         self.detailContainerView.addSubview(factImageView)
         self.detailContainerView.addSubview(titleLabel)
         self.detailContainerView.addSubview(descriptionLabel)
         addSubview(self.detailContainerView)
-        
-        // lets set up some constraints for our label
+        //Adding constriants/Constarint setup and activating them
         let constraints = [
             //Fact imageview constraints
             self.factImageView.topAnchor.constraint(equalTo: detailContainerView.topAnchor, constant: 8.0),
@@ -121,7 +123,7 @@ class FactsRowsTableViewCell: UITableViewCell {
         self.detailContainerBottomAnchorSpace = self.detailContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10.0)
         NSLayoutConstraint.activate([self.detailContainerTopAnchorSpace, self.detailContainerBottomAnchorSpace, self.imageViewHeight, self.imageViewBottomSpace])
         #if DEBUG
-            print("\n\n\nLayput is activated\n\n\n")
+        print("\n\n\nLayput is activated\n\n\n")
         #endif
     }
     
