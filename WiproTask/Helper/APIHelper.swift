@@ -15,11 +15,9 @@ class APIHelper: NSObject {
     var request : URLRequest!
     
     //Private init method
-    private override init() {
-        
-    }
+    private override init() {}
     
-    //Get API call
+    //MARK:- Get API call
     func codableGetRequestWith(apiName: String, headers: [String:String]?, completionHandler: @escaping (Bool, Data?, String) -> Void) {
         #if DEBUG
             print("\n\n\n")

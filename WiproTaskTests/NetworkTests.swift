@@ -1,8 +1,8 @@
 //
-//  NetworkTests.swift
+//  WiproTaskTests.swift
 //  WiproTaskTests
 //
-//  Created by XIPHIAS on 05/12/19.
+//  Created by Dayakar Reddy on 04/12/19.
 //  Copyright © 2019 dayakar. All rights reserved.
 //
 
@@ -19,6 +19,7 @@ class NetworkTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    //To check the URL used for API call
     func testCheckAPIWithExpectedURL() {
         let apiCallHandler = APIHelper.shared
         let headers = ["Content-Type": "application/json"]
@@ -26,10 +27,11 @@ class NetworkTests: XCTestCase {
         XCTAssertEqual(apiCallHandler.request.url?.absoluteString, APIs.facts)
     }
     
-    func testAPICallWorking() {
+    //To check the reponse from server
+    func testAPIResponseCode() {
         let apiCallHandler = APIHelper.shared
         let headers = ["Content-Type": "application/json"]
-        let errorExpectation = expectation(description: "error")
+        let responseExpectation = expectation(description: "error")
         var resonseReceived = false
         guard let internetStatus : Bool = Reachability()?.isReachable, internetStatus else{
             XCTFail("Internet connection is not available")
@@ -37,20 +39,19 @@ class NetworkTests: XCTestCase {
         }
         apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, data, message) in
             if status{
-                if let _ : Facts = try? JSONDecoder().decode(Facts.self, from: data!){
-                    resonseReceived = true
-                }
-                errorExpectation.fulfill()
+                resonseReceived = true
+                responseExpectation.fulfill()
             }
         }
-        wait(for: [errorExpectation], timeout: TimeInterval.init(2.0))
+        wait(for: [responseExpectation], timeout: TimeInterval.init(2.0))
         XCTAssertTrue(resonseReceived)
     }
     
+    //To check the facts title in API reponse.
     func testAPIReturingingTitle() {
         let apiCallHandler = APIHelper.shared
         let headers = ["Content-Type": "application/json"]
-        let errorExpectation = expectation(description: "error")
+        let responseExpectation = expectation(description: "error")
         var viewTitle : String?
         guard let internetStatus : Bool = Reachability()?.isReachable, internetStatus else{
             XCTFail("Internet connection is not available")
@@ -61,14 +62,15 @@ class NetworkTests: XCTestCase {
                 if let facts : Facts = try? JSONDecoder().decode(Facts.self, from: data!){
                     viewTitle = facts.title
                 }
-                errorExpectation.fulfill()
+                responseExpectation.fulfill()
             }
         }
-        wait(for: [errorExpectation], timeout: TimeInterval.init(2.0))
+        wait(for: [responseExpectation], timeout: TimeInterval.init(2.0))
         XCTAssertNotNil(viewTitle, "View title should return by API")
     }
     
-    func testAPIReturingingFacts() {
+    //To check the facts row response returning by API
+    func testAPIReturingFactsRows() {
         let apiCallHandler = APIHelper.shared
         let headers = ["Content-Type": "application/json"]
         let errorExpectation = expectation(description: "error")
@@ -89,5 +91,26 @@ class NetworkTests: XCTestCase {
         XCTAssertNotNil(factsRows, "facts rows should return by API")
         XCTAssertTrue((factsRows?.count ?? 0)>0, "facts data contained 1 or more then one facts")
     }
-
+    
+    //To check expected facts number rows return from API call.
+    func testAPIReturingExpectedFacrsRows() {
+        let apiCallHandler = APIHelper.shared
+        let headers = ["Content-Type": "application/json"]
+        let errorExpectation = expectation(description: "error")
+        var factsRows : [Rows]?
+        guard let internetStatus : Bool = Reachability()?.isReachable, internetStatus else{
+            XCTFail("Internet connection is not available")
+            return
+        }
+        apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, data, message) in
+            if status{
+                if let facts : Facts = try? JSONDecoder().decode(Facts.self, from: data!){
+                    factsRows = facts.rows
+                }
+                errorExpectation.fulfill()
+            }
+        }
+        wait(for: [errorExpectation], timeout: TimeInterval.init(2.0))
+        XCTAssertTrue((factsRows?.count ?? 0) == 14, "API not returned expected records 14")
+    }
 }

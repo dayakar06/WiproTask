@@ -10,7 +10,7 @@ import XCTest
 @testable import WiproTask
 
 class WiproTaskTests: XCTestCase {
-    
+    //SUT
     var viewController : FactsViewController!
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -26,22 +26,27 @@ class WiproTaskTests: XCTestCase {
         super.tearDown()
     }
     
+    //To check the view controller creation
     func testHasController(){
         XCTAssertNotNil(self.viewController)
     }
     
+    //To check the tableview creation
     func testHasATableView() {
         XCTAssertNotNil(self.viewController.tableView)
     }
     
+    //TO check the tableview delegate assign status
     func testTableViewHasDelegate() {
         XCTAssertNotNil(self.viewController.tableView.delegate)
     }
     
+    //To check the default NavigationViewController title
     func testViewTitleDoNotHasTitle() {
         XCTAssertTrue(self.viewController.title == nil, "View title should be empty")
     }
     
+    //To check the NavigationViewController title update status
     func testViewTitleDoHasTitle() {
         let viewTitle = "Test Title"
         self.viewController.title = viewTitle
@@ -49,10 +54,12 @@ class WiproTaskTests: XCTestCase {
         XCTAssertTrue(self.viewController.title == viewTitle, "View title should not empty")
     }
     
+    //To check the Tableview datasource assign status
     func testTableViewHasDataSource() {
         XCTAssertNotNil(self.viewController.tableView.dataSource)
     }
     
+    //To check the tableview numberOfRowsInSection method return count == 1 when facts rows count are not available
     func testNumberOfColumsWithOutData(){
         self.viewController.facts = Facts()
         let seection = 0
@@ -62,6 +69,7 @@ class WiproTaskTests: XCTestCase {
         XCTAssertTrue(self.viewController.tableView(self.viewController.tableView, numberOfRowsInSection: seection) == 1, file: "Should be 1 because we showing the NoDataAvaiableTableViewCell")
     }
     
+    //To check the tableview numberOfRowsInSection method return count when facts rows count are available
     func testNumberOfRowsWithSectionWithData() {
         let seection = 0
         var rows = [Rows]()
@@ -74,6 +82,7 @@ class WiproTaskTests: XCTestCase {
         XCTAssertTrue(self.viewController.tableView(self.viewController.tableView, numberOfRowsInSection: seection) == 3, file: "Tableview should have 3 rows")
     }
     
+    //To check the NoDataAvaiableTableViewCell return from cellForRowAt when facts row records are not available
     func testNoDataAvaiableTableViewCellIncaseDataNotThere() {
         let row = 0
         let section = 0
@@ -83,9 +92,10 @@ class WiproTaskTests: XCTestCase {
         
         let indexPath = IndexPath(row: row, section: section)
         
-        XCTAssertTrue(self.viewController.tableView(self.viewController.tableView, cellForRowAt: indexPath) is NoDataAvaiableTableViewCell, "Tableview cell should not be FactsRowsTableViewCell type")
+        XCTAssertTrue(self.viewController.tableView(self.viewController.tableView, cellForRowAt: indexPath) is NoDataAvaiableTableViewCell, "Tableview cell should  be return FactsRowsTableViewCell type")
     }
     
+    //To check the FactsRowsTableViewCell return from cellForRowAt when facts row records are available
     func testTableViewCellTypeShouldFactsRowsTableViewCell() {
         let row = 0
         let section = 0
@@ -96,9 +106,10 @@ class WiproTaskTests: XCTestCase {
         
         let indexPath = IndexPath(row: row, section: section)
         
-        XCTAssertTrue(self.viewController.tableView(self.viewController.tableView, cellForRowAt: indexPath) is FactsRowsTableViewCell, "Tableview cell should be FactsRowsTableViewCell type")
+        XCTAssertTrue(self.viewController.tableView(self.viewController.tableView, cellForRowAt: indexPath) is FactsRowsTableViewCell, "Tableview cell should be return FactsRowsTableViewCell type")
     }
     
+    //To check the tableview FactRowTableViewCell title when title is not available for the fact row
     func testTableViewCellDetailsTitle() {
         var rows = [Rows]()
         rows.append(Rows.init(title: "Beavers", description: "Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony", imagePath: "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/220px-American_Beaver.jpg"))
@@ -116,6 +127,7 @@ class WiproTaskTests: XCTestCase {
         XCTAssertTrue(cell.titleLabel.text == rows[row].title ?? "--", "Tableview cell should be FactsRowsTableViewCell type")
     }
     
+    //To check the tableview FactRowTableViewCell description when description is not available for the fact row
     func testTableViewCellDetailsDescription() {
         var rows = [Rows]()
         rows.append(Rows.init(title: "Housing", description: nil, imagePath: "http://icons.iconarchive.com/icons/iconshock/alaska/256/Igloo-icon.png"))
@@ -131,6 +143,7 @@ class WiproTaskTests: XCTestCase {
         XCTAssertTrue(cell.descriptionLabel.text == rows[row].description ?? "--", "Tableview cell should be FactsRowsTableViewCell type")
     }
     
+    //To check the tableview FactRowTableViewCell imagelink when imagelink is not available for the fact row
     func testTableViewCellDetailsImagePath() {
         var rows = [Rows]()
         rows.append(Rows.init(title: "Housing", description: "Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony", imagePath: nil))

@@ -10,9 +10,7 @@ import UIKit
 
 class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    fileprivate let factsCellId = "FactCell"
-    fileprivate let noDataAvailable = "NoDataAvaiable"
-    
+    //Tableview
     var tableView : UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -22,6 +20,11 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return tableView
     }()
     
+    //Tablevuew cell ReusableCellIdentifiers
+    fileprivate let factsCellId = "FactCell"
+    fileprivate let noDataAvailable = "NoDataAvaiable"
+    
+    //Facts variable to store the facts API response
     var facts = Facts(){
         didSet{
             //Updating the view title and reloading the tableview
@@ -31,10 +34,11 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
-    
+    //To prevent API calls continuously...
     var factsApiCalling = false
+    //Refreshcontroler to add 
     var dataRefreshControl: UIRefreshControl?
-    
+    //Reachablitily to check the internet connection
     let reachability = Reachability()!
     
     //MARK:- View life cycle
@@ -55,21 +59,26 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.tableView.register(FactsRowsTableViewCell.self, forCellReuseIdentifier: self.factsCellId)
         self.tableView.register(NoDataAvaiableTableViewCell.self, forCellReuseIdentifier: self.noDataAvailable)
-        //TODO: Updating with refersh controller
-        self.dataRefreshControl = UIRefreshControl()
-        self.dataRefreshControl?.addTarget(self, action: #selector(self.refreshWeatherData(_:)), for: .valueChanged)
-        self.dataRefreshControl?.tintColor = .darkGray
-        self.dataRefreshControl?.attributedTitle = NSAttributedString(string: "Fetching Updated Details...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.italicSystemFont(ofSize: 15)])
-        self.tableView.refreshControl = self.dataRefreshControl
+        self.addRefreshControllerToTableView()
         //TODO: get the facts data
         self.getFactsData()
     }
     
-    @objc private func refreshWeatherData(_ sender: Any) {
+    //To add refresh control to tableview
+    func addRefreshControllerToTableView(){
+        self.dataRefreshControl = UIRefreshControl()
+        self.dataRefreshControl?.addTarget(self, action: #selector(self.refreshFactsRowsData(_:)), for: .valueChanged)
+        self.dataRefreshControl?.tintColor = .darkGray
+        self.dataRefreshControl?.attributedTitle = NSAttributedString(string: "Fetching Updated Details...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.italicSystemFont(ofSize: 15)])
+        self.tableView.refreshControl = self.dataRefreshControl
+    }
+    
+    //Refresh control observer
+    @objc private func refreshFactsRowsData(_ sender: Any) {
         self.getFactsData()
     }
     
-    //TODO: Get facts data
+    //TODO: To refresh the facts data
     func getFactsData(){
         self.facts = Facts(title: "", rows: [Rows]())
         DispatchQueue.global(qos: .utility).async {
@@ -77,9 +86,10 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    //MARK:- Webservices
+    //MARK:- Webserices
+    //API call used to get the facts details from server
     func getData(){
-        //Stoping from calling the API incase api calling currently.
+        //Stoping from API call, incase API calling currently.
         if self.factsApiCalling{
             return
         }
@@ -103,7 +113,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if status{
                 if let facts : Facts = try? JSONDecoder().decode(Facts.self, from: data!){
                     #if DEBUG
-                    print("Facts Count = \(facts.rows?.count ?? 0)")
+                        print("Facts Count = \(facts.rows?.count ?? 0)")
                     #endif
                     self?.facts = facts
                 }
@@ -113,7 +123,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     }
                 }
             }
-                //On API call failure showing the error message
+            //On API call failure showing the error message
             else{
                 DispatchQueue.main.async {
                     self?.showToast(message: message)
@@ -149,7 +159,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.detailContainerBottomAnchorSpace.constant = indexPath.row == self.facts.rows?.count ? -10 : -5
             return cell
         }
-            //Incase of facts not receied or internet connection issue, showing the no data available cell.
+        //Incase of facts not receied or internet connection issue, showing the no data available cell.
         else if self.facts.rows?.count == 0, let cell : NoDataAvaiableTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.noDataAvailable, for: indexPath) as? NoDataAvaiableTableViewCell{
             cell.selectionStyle = .none
             return cell

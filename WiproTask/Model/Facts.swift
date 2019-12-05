@@ -8,6 +8,7 @@
 
 import Foundation
 
+//To store the facts details with codeable protocal, so that we can use for while parsing data.
 struct Facts : Codable {
     let title : String?
     let rows : [Rows]?
@@ -34,6 +35,7 @@ struct Facts : Codable {
     }
 }
 
+//Fact row structure
 struct Rows : Codable {
     let title : String?
     let description : String?

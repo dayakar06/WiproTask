@@ -10,6 +10,7 @@ import UIKit
 
 class NoDataAvaiableTableViewCell: UITableViewCell {
     
+    //All the views
     let statusLabel = UILabel()
     let detailContainerView = UIView()
     

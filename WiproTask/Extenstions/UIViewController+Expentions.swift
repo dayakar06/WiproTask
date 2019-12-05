@@ -16,21 +16,26 @@ extension UIViewController {
         alert.view.backgroundColor = UIColor.black
         alert.view.alpha = 0.6
         alert.view.layer.cornerRadius = 15
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
     }
     
+    //TODO: Shows an alert with Ok action
     func presentAlert(withTitle title: String?, message : String?, complitionHandler: @escaping () -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+        let OKAction = UIAlertAction(title: "Ok", style: .default) { action in
             #if DEBUG
                 print("You've pressed OK Button")
             #endif
             complitionHandler()
         }
         alertController.addAction(OKAction)
-        self.present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }

@@ -11,16 +11,19 @@ import SDWebImage
 
 class FactsRowsTableViewCell: UITableViewCell {
     
+    //All the views
     let factImageView = UIImageView()
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
     let detailContainerView = UIView()
     
+    //Layout contraints to control the detailContainerView and factImageView height
     var detailContainerTopAnchorSpace = NSLayoutConstraint()
     var detailContainerBottomAnchorSpace = NSLayoutConstraint()
     var imageViewHeight = NSLayoutConstraint()
     var imageViewBottomSpace = NSLayoutConstraint()
     
+    //Facts data with property observers to update the fact daetail on FactsRowsTableViewCell
     var factDetails: Rows! {
         didSet {
             #if DEBUG
@@ -123,7 +126,7 @@ class FactsRowsTableViewCell: UITableViewCell {
         self.detailContainerBottomAnchorSpace = self.detailContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10.0)
         NSLayoutConstraint.activate([self.detailContainerTopAnchorSpace, self.detailContainerBottomAnchorSpace, self.imageViewHeight, self.imageViewBottomSpace])
         #if DEBUG
-        print("\n\n\nLayput is activated\n\n\n")
+            print("\n\n\nLayput is activated\n\n\n")
         #endif
     }
     
