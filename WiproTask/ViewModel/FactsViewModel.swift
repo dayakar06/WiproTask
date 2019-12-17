@@ -23,7 +23,7 @@ class FactsViewModel{
     }
     
     //Store and update the loading/API call status to the FactViewController
-    var isLoading: Bool = false {
+    var factsApiCalling: Bool = false {
         didSet {
             self.updateLoadingStatusClosure?()
         }
@@ -49,11 +49,25 @@ class FactsViewModel{
         return factsCount
     }
     
+    //Reachablitily to check the internet connection
+    let reachability = Reachability()!
+    
     //TO fetch the data from server
     func fetchFactsData() {
-        self.isLoading = true
+        //Stoping from calling the API incase api calling currently.
+        if self.factsApiCalling{
+            return
+        }
+        self.factsApiCalling = true
+        self.removeAllFacts()
+        //Checking the internet connectivity
+        if !reachability.isReachable{
+            self.alertMessage = CustomMessages.noInternet
+            self.factsApiCalling = false
+            return
+        }
         APIHelper.shared.codableGetRequestWith(apiName: APIs.facts, headers: ["Content-Type": "application/json"]) { [weak self] (status, data, message) in
-            self?.isLoading = false
+            self?.factsApiCalling = false
             //On susccessful api call reponse paring the data.
             if status{
                 if let facts : Facts = try? JSONDecoder().decode(Facts.self, from: data!){

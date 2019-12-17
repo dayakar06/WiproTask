@@ -11,7 +11,7 @@ import UIKit
 class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //Tableview
-    var tableView : UITableView = {
+    lazy var tableView : UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.backgroundColor = .groupTableViewBackground
@@ -62,7 +62,7 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.dataRefreshControl = UIRefreshControl()
         self.dataRefreshControl?.addTarget(self, action: #selector(self.refreshFactsRowsData(_:)), for: .valueChanged)
         self.dataRefreshControl?.tintColor = .darkGray
-        self.dataRefreshControl?.attributedTitle = NSAttributedString(string: "Fetching Updated Details...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.italicSystemFont(ofSize: 15)])
+        self.dataRefreshControl?.attributedTitle = NSAttributedString(string: CustomMessages.refreshing, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.italicSystemFont(ofSize: FontSize.s15)])
         self.tableView.refreshControl = self.dataRefreshControl
     }
     
@@ -71,22 +71,17 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.factsViewModel.fetchFactsData()
     }
     
-    //To refresh the facts data
-    func getFactsData(){
-        self.factsViewModel.fetchFactsData()
-    }
-    
     //initializing the FactviewModel binding with view
     func initiateFactsViewModel() {
         self.factsViewModel.removeAllFacts()
         //Error handling
         self.factsViewModel.showAlertClosure = { [weak self] (message) in
-            self?.showToast(message: CustomMessages.dataParseError)
+            self?.showToast(message: message)
         }
         //Updating the API calls status
         self.factsViewModel.updateLoadingStatusClosure = { [weak self] () in
             DispatchQueue.main.async {
-                if let isLoading : Bool = self?.factsViewModel.isLoading as Bool?, isLoading {
+                if let isLoading : Bool = self?.factsViewModel.factsApiCalling as Bool?, isLoading {
                     self?.showIndicator()
                 }else {
                     self?.hideIndicator()
@@ -123,8 +118,8 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //Incase facts data available showing the facts data.
         if self.factsViewModel.numberOfCells > 0, indexPath.row < (self.factsViewModel.numberOfCells), let factDetails : Rows = self.factsViewModel.valueAtIndex(indexPath.row), let cell : FactsRowsTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.factsCellId, for: indexPath) as? FactsRowsTableViewCell{
             cell.prepareTableViewCellWith(factData: factDetails)
-            cell.detailContainerTopAnchorSpace.constant = indexPath.row == 0 ? 10 : 5
-            cell.detailContainerBottomAnchorSpace.constant = indexPath.row == self.factsViewModel.numberOfCells ? -10 : -5
+            cell.detailContainerTopAnchorSpace.constant = indexPath.row == 0 ? ViewsSpacing.outer : ViewsSpacing.middle
+            cell.detailContainerBottomAnchorSpace.constant = indexPath.row == self.factsViewModel.numberOfCells ? -ViewsSpacing.outer : -ViewsSpacing.middle
             return cell
         }
             //Incase of facts not receied or internet connection issue, showing the no data available cell.

@@ -32,16 +32,16 @@ class FactsRowsTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         //Customizing the view
         self.detailContainerView.backgroundColor = .white
-        self.detailContainerView.layer.cornerRadius = 5
+        self.detailContainerView.layer.cornerRadius = CornerRadios._5
         //Customizing the imageview
-        self.factImageView.layer.cornerRadius = 5
+        self.factImageView.layer.cornerRadius = CornerRadios._5
         self.factImageView.clipsToBounds = true
         //Customizing the title label
-        self.titleLabel.numberOfLines = 0
+        self.titleLabel.numberOfLines = LabelTextLines.l0
         self.titleLabel.lineBreakMode = .byWordWrapping
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: FontSize.s17)
         //Customizing the description label
-        self.descriptionLabel.numberOfLines = 0
+        self.descriptionLabel.numberOfLines = LabelTextLines.l0
         self.descriptionLabel.lineBreakMode = .byWordWrapping
         //Disabling the translates autoresiging maks into constraints functionality
         self.factImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -54,35 +54,37 @@ class FactsRowsTableViewCell: UITableViewCell {
         self.detailContainerView.addSubview(descriptionLabel)
         addSubview(self.detailContainerView)
         //Adding constriants/Constarint setup and activating them
+        self.titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        self.titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         let constraints = [
             //Fact imageview constraints
-            self.factImageView.topAnchor.constraint(equalTo: detailContainerView.topAnchor, constant: 8.0),
-            self.factImageView.leadingAnchor.constraint(equalTo: detailContainerView.leadingAnchor, constant: 8.0),
-            self.factImageView.trailingAnchor.constraint(equalTo: detailContainerView.trailingAnchor, constant: -8.0),
+            self.factImageView.topAnchor.constraint(equalTo: detailContainerView.topAnchor, constant: ViewsSpacing.inner),
+            self.factImageView.leadingAnchor.constraint(equalTo: detailContainerView.leadingAnchor, constant: ViewsSpacing.inner),
+            self.factImageView.trailingAnchor.constraint(equalTo: detailContainerView.trailingAnchor, constant: -ViewsSpacing.inner),
             
-            self.factImageView.widthAnchor.constraint(equalTo: detailContainerView.widthAnchor, multiplier: 1.0, constant: -16),
+            self.factImageView.widthAnchor.constraint(equalTo: detailContainerView.widthAnchor, multiplier: ViewSizeMultiplier._default, constant: -2*ViewsSpacing.inner),
             //Title label constraints
-            self.titleLabel.leadingAnchor.constraint(equalTo: detailContainerView.leadingAnchor, constant: 8.0),
-            self.titleLabel.trailingAnchor.constraint(equalTo: detailContainerView.trailingAnchor, constant: -8.0),
+            self.titleLabel.leadingAnchor.constraint(equalTo: detailContainerView.leadingAnchor, constant: ViewsSpacing.inner),
+            self.titleLabel.trailingAnchor.constraint(equalTo: detailContainerView.trailingAnchor, constant: -ViewsSpacing.inner),
             //Description label constraints
-            self.descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5.0),
-            self.descriptionLabel.leadingAnchor.constraint(equalTo: detailContainerView.leadingAnchor, constant: 8.0),
-            self.descriptionLabel.bottomAnchor.constraint(equalTo: detailContainerView.bottomAnchor, constant: -8.0),
-            self.descriptionLabel.trailingAnchor.constraint(equalTo: detailContainerView.trailingAnchor, constant: -8.0),
+            self.descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: ViewsSpacing.middle),
+            self.descriptionLabel.leadingAnchor.constraint(equalTo: detailContainerView.leadingAnchor, constant: ViewsSpacing.inner),
+            self.descriptionLabel.bottomAnchor.constraint(equalTo: detailContainerView.bottomAnchor, constant: -ViewsSpacing.inner),
+            self.descriptionLabel.trailingAnchor.constraint(equalTo: detailContainerView.trailingAnchor, constant: -ViewsSpacing.inner),
             //Details constainer view constraints
-            self.detailContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10.0),
-            self.detailContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10.0)
+            self.detailContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: ViewsSpacing.outer),
+            self.detailContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -ViewsSpacing.outer)
         ]
         NSLayoutConstraint.activate(constraints)
         //To adjust the image height
-        self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalTo: factImageView.widthAnchor, multiplier: 2.1/4.0)
-        self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: 5.0)
+        self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalTo: factImageView.widthAnchor, multiplier: ViewSizeRatios.image)
+        self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: ViewsSpacing.middle)
         //To adjst the top and button spaces
-        self.detailContainerTopAnchorSpace = self.detailContainerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10.0)
-        self.detailContainerBottomAnchorSpace = self.detailContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10.0)
+        self.detailContainerTopAnchorSpace = self.detailContainerView.topAnchor.constraint(equalTo: self.topAnchor, constant: ViewsSpacing.outer)
+        self.detailContainerBottomAnchorSpace = self.detailContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -ViewsSpacing.outer)
         NSLayoutConstraint.activate([self.detailContainerTopAnchorSpace, self.detailContainerBottomAnchorSpace, self.imageViewHeight, self.imageViewBottomSpace])
         #if DEBUG
-            print("\n\n\nLayput is activated\n\n\n")
+        print("\n\n\nLayout is activated\n\n\n")
         #endif
     }
     
@@ -116,16 +118,16 @@ class FactsRowsTableViewCell: UITableViewCell {
             //deactiving image height and bottom sapce constaints and adding new constraints
             self.imageViewHeight.isActive = false
             self.imageViewBottomSpace.isActive = false
-            self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalTo: factImageView.widthAnchor, multiplier: 2.1/4.0)
-            self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: 5.0)
+            self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalTo: factImageView.widthAnchor, multiplier: ViewSizeRatios.image)
+            self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: ViewsSpacing.middle)
             NSLayoutConstraint.activate([self.imageViewHeight, self.imageViewBottomSpace])
         }
         else{
             //deactiving image height and bottom sapce constaints and adding new constraints
             self.imageViewHeight.isActive = false
             self.imageViewBottomSpace.isActive = false
-            self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalToConstant: 0)
-            self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: 0)
+            self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalToConstant: ViewsSpacing.zero)
+            self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: ViewsSpacing.zero)
             NSLayoutConstraint.activate([self.imageViewHeight, self.imageViewBottomSpace])
         }
     }

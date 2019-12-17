@@ -21,14 +21,14 @@ class NoDataAvaiableTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         //Customizing the details container view
         self.detailContainerView.backgroundColor = .white
-        self.detailContainerView.layer.cornerRadius = 5
+        self.detailContainerView.layer.cornerRadius = CornerRadios._5
         //Customizing the status lebel
-        self.statusLabel.numberOfLines = 0
+        self.statusLabel.numberOfLines = LabelTextLines.l0
         self.statusLabel.textAlignment = .center
         self.statusLabel.lineBreakMode = .byWordWrapping
         self.statusLabel.text = CustomMessages.noData
         self.statusLabel.textColor = .darkText
-        self.statusLabel.font = UIFont.boldSystemFont(ofSize: 26.0)
+        self.statusLabel.font = UIFont.boldSystemFont(ofSize: FontSize.s26)
         //Disabling the translates autoresiging maks into constraints functionality.
         self.statusLabel.translatesAutoresizingMaskIntoConstraints = false
         self.detailContainerView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,19 +38,19 @@ class NoDataAvaiableTableViewCell: UITableViewCell {
         //Adding constriants/Constarint setup and activating them.
         let constraints = [
             //status label constraints
-            self.statusLabel.leadingAnchor.constraint(equalTo: self.detailContainerView.leadingAnchor, constant: 10.0),
-            self.detailContainerView.trailingAnchor.constraint(equalTo: self.statusLabel.trailingAnchor, constant: 10.0),
-            self.statusLabel.topAnchor.constraint(equalTo: self.detailContainerView.topAnchor, constant: 10.0),
-            self.detailContainerView.bottomAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 10.0),
+            self.statusLabel.leadingAnchor.constraint(equalTo: self.detailContainerView.leadingAnchor, constant: ViewsSpacing.outer),
+            self.detailContainerView.trailingAnchor.constraint(equalTo: self.statusLabel.trailingAnchor, constant: ViewsSpacing.outer),
+            self.statusLabel.topAnchor.constraint(equalTo: self.detailContainerView.topAnchor, constant: ViewsSpacing.outer),
+            self.detailContainerView.bottomAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: ViewsSpacing.outer),
             //Details constainer view constraints
-            self.detailContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10.0),
-            self.trailingAnchor.constraint(equalTo: self.detailContainerView.trailingAnchor, constant: 10.0),
-            self.detailContainerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10.0),
-            self.bottomAnchor.constraint(equalTo: self.detailContainerView.bottomAnchor, constant: 10.0)
+            self.detailContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: ViewsSpacing.outer),
+            self.trailingAnchor.constraint(equalTo: self.detailContainerView.trailingAnchor, constant: ViewsSpacing.outer),
+            self.detailContainerView.topAnchor.constraint(equalTo: self.topAnchor, constant: ViewsSpacing.outer),
+            self.bottomAnchor.constraint(equalTo: self.detailContainerView.bottomAnchor, constant: ViewsSpacing.outer)
         ]
         NSLayoutConstraint.activate(constraints)
         #if DEBUG
-        print("\n\n\nLayput is activated\n\n\n")
+        print("\n\n\nLayout is activated\n\n\n")
         #endif
     }
     

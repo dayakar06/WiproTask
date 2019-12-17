@@ -101,8 +101,8 @@
 		6B3FDB3D23A9409800D31EC1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				6B3FDB3E23A9409800D31EC1 /* FactsRowsTableViewCellViewModel.swift */,
 				6B3FDB3F23A9409800D31EC1 /* FactsViewModel.swift */,
+				6B3FDB3E23A9409800D31EC1 /* FactsRowsTableViewCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
