@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    //TODO: To show the alerts
+    //To show the alerts
     func showToast(title: String? = nil, message : String, seconds: Double = 2.0) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.view.backgroundColor = UIColor.black
@@ -24,7 +24,7 @@ extension UIViewController {
         }
     }
     
-    //TODO: Shows an alert with Ok action
+    //Shows an alert with Ok action
     func presentAlert(withTitle title: String?, message : String?, complitionHandler: @escaping () -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "Ok", style: .default) { action in

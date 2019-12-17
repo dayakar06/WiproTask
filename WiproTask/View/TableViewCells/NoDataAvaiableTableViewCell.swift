@@ -18,6 +18,7 @@ class NoDataAvaiableTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = .clear
+        self.selectionStyle = .none
         //Customizing the details container view
         self.detailContainerView.backgroundColor = .white
         self.detailContainerView.layer.cornerRadius = 5

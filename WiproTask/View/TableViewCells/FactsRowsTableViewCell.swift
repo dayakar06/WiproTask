@@ -24,55 +24,11 @@ class FactsRowsTableViewCell: UITableViewCell {
     var imageViewBottomSpace = NSLayoutConstraint()
     
     //Facts data with property observers to update the fact daetail on FactsRowsTableViewCell
-    var factDetails: Rows! {
-        didSet {
-            #if DEBUG
-                print("""
-                    \n\n\n
-                    \(self.factDetails.title ?? "Title nil")
-                    \(self.factDetails.description ?? "Description nil")
-                    \(self.factDetails.imageHref ?? "ImageHref nil")
-                    \n\n\n
-                """)
-            #endif
-            //When there is not data, am showing the custom message
-            if self.factDetails.title?.isEmpty ?? true && self.factDetails.description?.isEmpty ?? true && self.factDetails.imageHref?.isEmpty ?? true{
-                self.titleLabel.text = CustomMessages.noDetails
-                self.descriptionLabel.text = ""
-            }
-            else{
-                //UI updating
-                self.titleLabel.text = self.factDetails.title ?? "--"
-                self.descriptionLabel.text = self.factDetails.description ?? "--"
-            }
-            //Customizing the imagevuew >> Incase image url is not avaialble hiding the imageview from the tableview cell lese showing the respected image using url.
-            self.factImageView.image = #imageLiteral(resourceName: "imageNotFound")
-            if let imageUrl : String = self.factDetails.imageHref, !imageUrl.isEmpty, let url = URL.init(string: imageUrl) {
-                //SDWebimageview customising
-                self.factImageView.sd_setShowActivityIndicatorView(true)
-                self.factImageView.sd_setIndicatorStyle(.gray)
-                self.factImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "imageNotFound"), options: .queryDataWhenInMemory)
-                //deactiving image height and bottom sapce constaints and adding new constraints
-                self.imageViewHeight.isActive = false
-                self.imageViewBottomSpace.isActive = false
-                self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalTo: factImageView.widthAnchor, multiplier: 2.1/4.0)
-                self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: 5.0)
-                NSLayoutConstraint.activate([self.imageViewHeight, self.imageViewBottomSpace])
-            }
-            else{
-                //deactiving image height and bottom sapce constaints and adding new constraints
-                self.imageViewHeight.isActive = false
-                self.imageViewBottomSpace.isActive = false
-                self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalToConstant: 0)
-                self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: 0)
-                NSLayoutConstraint.activate([self.imageViewHeight, self.imageViewBottomSpace])
-            }
-        }
-    }
+    private var factsRowsTableViewCellVM: FactsRowsTableViewCellViewModel!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        self.selectionStyle = .none
         self.backgroundColor = .clear
         //Customizing the view
         self.detailContainerView.backgroundColor = .white
@@ -132,6 +88,46 @@ class FactsRowsTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func prepareTableViewCellWith(factData: Rows) {
+        self.factsRowsTableViewCellVM = FactsRowsTableViewCellViewModel(factRow: factData)
+        self.setUpUI()
+    }
+    
+    func setUpUI(){
+        //When there is not data, am showing the custom message
+        if self.factsRowsTableViewCellVM.noDataAvaiable{
+            self.titleLabel.text = CustomMessages.noDetails
+            self.descriptionLabel.text = ""
+        }
+        else{
+            //UI updating
+            self.titleLabel.text = self.factsRowsTableViewCellVM.title
+            self.descriptionLabel.text = self.factsRowsTableViewCellVM.description
+        }
+        //Customizing the imagevuew >> Incase image url is not avaialble hiding the imageview from the tableview cell lese showing the respected image using url.
+        self.factImageView.image = #imageLiteral(resourceName: "imageNotFound")
+        if let imageUrl : URL = self.factsRowsTableViewCellVM.imageURL{
+            //SDWebimageview customising
+            self.factImageView.sd_setShowActivityIndicatorView(true)
+            self.factImageView.sd_setIndicatorStyle(.gray)
+            self.factImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "imageNotFound"), options: .queryDataWhenInMemory)
+            //deactiving image height and bottom sapce constaints and adding new constraints
+            self.imageViewHeight.isActive = false
+            self.imageViewBottomSpace.isActive = false
+            self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalTo: factImageView.widthAnchor, multiplier: 2.1/4.0)
+            self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: 5.0)
+            NSLayoutConstraint.activate([self.imageViewHeight, self.imageViewBottomSpace])
+        }
+        else{
+            //deactiving image height and bottom sapce constaints and adding new constraints
+            self.imageViewHeight.isActive = false
+            self.imageViewBottomSpace.isActive = false
+            self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalToConstant: 0)
+            self.imageViewBottomSpace = self.titleLabel.topAnchor.constraint(equalTo: factImageView.bottomAnchor, constant: 0)
+            NSLayoutConstraint.activate([self.imageViewHeight, self.imageViewBottomSpace])
+        }
     }
 }
 
