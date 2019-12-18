@@ -30,8 +30,8 @@ class FactsRowsTableViewCellViewModel{
     }
     
     //Used to return the data avaiable status
-    var noDataAvaiable : Bool{
-        return (self.title.isEmpty && self.description.isEmpty && self.factImageLink.isEmpty)
+    var isFactDataAvaiable : Bool{
+        return !(self.title.isEmpty && self.description.isEmpty && self.factImageLink.isEmpty)
     }
     
     //Used to return the Image avaiable status

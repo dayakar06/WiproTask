@@ -8,17 +8,17 @@
 
 import Foundation
 
-class APIHelper: NSObject {
+protocol APIHelperProtocol {
+    func codableGetRequestWith(apiName: String, headers: [String:String]?, completionHandler: @escaping (Bool, Facts?, String) -> Void)
+}
+
+class APIHelper: APIHelperProtocol{
     
-    //Shared singalton class obj.
-    static let shared = APIHelper()
+    //API request
     var request : URLRequest!
     
-    //Private init method
-    private override init() {}
-    
     //MARK:- Get API call
-    func codableGetRequestWith(apiName: String, headers: [String:String]?, completionHandler: @escaping (Bool, Data?, String) -> Void) {
+    func codableGetRequestWith(apiName: String, headers: [String:String]?, completionHandler: @escaping (Bool, Facts?, String) -> Void) {
         #if DEBUG
             print("\n\n\n")
             print("GET")
@@ -43,15 +43,18 @@ class APIHelper: NSObject {
                     print("\(apiName) error = ",error?.localizedDescription ?? CustomMessages.defaultResponseError)
                 #endif
                 completionHandler(false, nil, error?.localizedDescription ?? CustomMessages.defaultResponseError)
-                return
             }
             else{
                 let responseStrInISOLatin = String(data: data ?? Data(), encoding: String.Encoding.isoLatin1)
                 guard let modifiedDataInUTF8Format = responseStrInISOLatin?.data(using: String.Encoding.utf8) else {
-                    print("could not convert data to UTF-8 format")
+                    completionHandler(true, nil, CustomMessages.dataConversionError)
                     return
                 }
-                completionHandler(true, modifiedDataInUTF8Format, "Success")
+                guard let facts : Facts = try? JSONDecoder().decode(Facts.self, from: modifiedDataInUTF8Format) else{
+                    completionHandler(true, nil, CustomMessages.dataParseError)
+                    return
+                }
+                completionHandler(true, facts, "Success")
             }
         }).resume()
     }

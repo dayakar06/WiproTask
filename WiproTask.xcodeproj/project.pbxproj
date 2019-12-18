@@ -11,9 +11,11 @@
 		6B3FDB4023A9409800D31EC1 /* FactsRowsTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3FDB3E23A9409800D31EC1 /* FactsRowsTableViewCellViewModel.swift */; };
 		6B3FDB4123A9409800D31EC1 /* FactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3FDB3F23A9409800D31EC1 /* FactsViewModel.swift */; };
 		6B3FDB4323A940E200D31EC1 /* UIViewController+MBProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3FDB4223A940E200D31EC1 /* UIViewController+MBProgressHud.swift */; };
-		6B4A22B923982AB000A247B8 /* WiproTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22B823982AB000A247B8 /* WiproTaskTests.swift */; };
 		6B4A22D22398455D00A247B8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22D12398455D00A247B8 /* Reachability.swift */; };
 		6B4A22D623984B4800A247B8 /* NoDataAvaiableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A22D523984B4800A247B8 /* NoDataAvaiableTableViewCell.swift */; };
+		6B4B344E23AA755600F7723D /* FactsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4B344D23AA755600F7723D /* FactsViewModelTests.swift */; };
+		6B4B345023AA763B00F7723D /* FactsReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4B344F23AA763B00F7723D /* FactsReponse.swift */; };
+		6B4B345223AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4B345123AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift */; };
 		6BD116E22396C98C005F7A4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E12396C98C005F7A4E /* AppDelegate.swift */; };
 		6BD116E42396C98C005F7A4E /* FactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E32396C98C005F7A4E /* FactsViewController.swift */; };
 		6BD116EF2396C991005F7A4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD116ED2396C991005F7A4E /* LaunchScreen.storyboard */; };
@@ -43,10 +45,12 @@
 		6B3FDB3F23A9409800D31EC1 /* FactsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsViewModel.swift; sourceTree = "<group>"; };
 		6B3FDB4223A940E200D31EC1 /* UIViewController+MBProgressHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+MBProgressHud.swift"; sourceTree = "<group>"; };
 		6B4A22B623982AB000A247B8 /* WiproTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiproTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B4A22B823982AB000A247B8 /* WiproTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiproTaskTests.swift; sourceTree = "<group>"; };
 		6B4A22BA23982AB000A247B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B4A22D12398455D00A247B8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		6B4A22D523984B4800A247B8 /* NoDataAvaiableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataAvaiableTableViewCell.swift; sourceTree = "<group>"; };
+		6B4B344D23AA755600F7723D /* FactsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsViewModelTests.swift; sourceTree = "<group>"; };
+		6B4B344F23AA763B00F7723D /* FactsReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsReponse.swift; sourceTree = "<group>"; };
+		6B4B345123AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsRowsTableViewCellViewModelTests.swift; sourceTree = "<group>"; };
 		6BD116DE2396C98C005F7A4E /* WiproTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiproTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD116E12396C98C005F7A4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BD116E32396C98C005F7A4E /* FactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewController.swift; sourceTree = "<group>"; };
@@ -110,8 +114,9 @@
 		6B4A22B723982AB000A247B8 /* WiproTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				6B4A22B823982AB000A247B8 /* WiproTaskTests.swift */,
 				6BFCCDF323995E6E006BA177 /* NetworkTests.swift */,
+				6B4B344D23AA755600F7723D /* FactsViewModelTests.swift */,
+				6B4B345123AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift */,
 				6B4A22BA23982AB000A247B8 /* Info.plist */,
 			);
 			path = WiproTaskTests;
@@ -159,6 +164,7 @@
 				6BD117192396CB31005F7A4E /* APIHelper.swift */,
 				6BD1171B2396CBA7005F7A4E /* Constants.swift */,
 				6B4A22D12398455D00A247B8 /* Reachability.swift */,
+				6B4B344F23AA763B00F7723D /* FactsReponse.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -343,7 +349,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BFCCDF423995E6E006BA177 /* NetworkTests.swift in Sources */,
-				6B4A22B923982AB000A247B8 /* WiproTaskTests.swift in Sources */,
+				6B4B344E23AA755600F7723D /* FactsViewModelTests.swift in Sources */,
+				6B4B345223AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +362,7 @@
 				6BD1171C2396CBA7005F7A4E /* Constants.swift in Sources */,
 				6BD1171E2396CD81005F7A4E /* Facts.swift in Sources */,
 				6BD1171A2396CB31005F7A4E /* APIHelper.swift in Sources */,
+				6B4B345023AA763B00F7723D /* FactsReponse.swift in Sources */,
 				6B3FDB4023A9409800D31EC1 /* FactsRowsTableViewCellViewModel.swift in Sources */,
 				6B4A22D623984B4800A247B8 /* NoDataAvaiableTableViewCell.swift in Sources */,
 				6B3FDB4123A9409800D31EC1 /* FactsViewModel.swift in Sources */,

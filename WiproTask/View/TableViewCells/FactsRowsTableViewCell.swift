@@ -101,14 +101,14 @@ class FactsRowsTableViewCell: UITableViewCell {
     //Customizes the factsrows tableview cell
     func setUpUI(){
         //When there is not data, am showing the custom message
-        if self.factsRowsTableViewCellVM.noDataAvaiable{
-            self.titleLabel.text = CustomMessages.noDetails
-            self.descriptionLabel.text = ""
-        }
-        else{
+        if self.factsRowsTableViewCellVM.isFactDataAvaiable{
             //UI updating
             self.titleLabel.text = self.factsRowsTableViewCellVM.title
             self.descriptionLabel.text = self.factsRowsTableViewCellVM.description
+        }
+        else{
+            self.titleLabel.text = CustomMessages.noDetails
+            self.descriptionLabel.text = ""
         }
         //Customizing the imagevuew >> Incase image url is not avaialble hiding the imageview from the tableview cell lese showing the respected image using url.
         self.factImageView.image = #imageLiteral(resourceName: "imageNotFound")

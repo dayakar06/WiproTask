@@ -10,6 +10,9 @@ import Foundation
 
 class FactsViewModel{
     
+    //API calls
+    let apiHelper: APIHelperProtocol
+    
     //Closures used to communicate with View(FactViewController)
     var reloadTableViewClosure: (()->())?
     var showAlertClosure: ((String)->())?
@@ -52,6 +55,10 @@ class FactsViewModel{
     //Reachablitily to check the internet connection
     let reachability = Reachability()!
     
+    init( apiHelper: APIHelperProtocol = APIHelper()) {
+        self.apiHelper = apiHelper
+    }
+    
     //TO fetch the data from server
     func fetchFactsData() {
         //Stoping from calling the API incase api calling currently.
@@ -66,19 +73,11 @@ class FactsViewModel{
             self.factsApiCalling = false
             return
         }
-        APIHelper.shared.codableGetRequestWith(apiName: APIs.facts, headers: ["Content-Type": "application/json"]) { [weak self] (status, data, message) in
+        apiHelper.codableGetRequestWith(apiName: APIs.facts, headers: ["Content-Type": "application/json"]) { [weak self] (status, facts, message) in
             self?.factsApiCalling = false
             //On susccessful api call reponse paring the data.
             if status{
-                if let facts : Facts = try? JSONDecoder().decode(Facts.self, from: data!){
-                    #if DEBUG
-                        print("Facts Count = \(facts.rows?.count ?? 0)")
-                    #endif
-                    self?.facts = facts
-                }
-                else{
-                    self?.alertMessage = CustomMessages.dataParseError
-                }
+                self?.facts = facts ?? Facts()
             }
             //On API call failure showing the error message
             else{
