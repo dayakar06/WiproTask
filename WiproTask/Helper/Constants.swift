@@ -41,10 +41,6 @@ struct CornerRadios {
 //View size rations
 struct ViewSizeRatios{
     static let image : CGFloat = 2.1/4.0
-}
-
-//View size multiplier
-struct ViewSizeMultiplier {
     static let _default : CGFloat = 1.0
 }
 

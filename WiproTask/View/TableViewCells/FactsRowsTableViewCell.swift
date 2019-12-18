@@ -62,7 +62,7 @@ class FactsRowsTableViewCell: UITableViewCell {
             self.factImageView.leadingAnchor.constraint(equalTo: detailContainerView.leadingAnchor, constant: ViewsSpacing.inner),
             self.factImageView.trailingAnchor.constraint(equalTo: detailContainerView.trailingAnchor, constant: -ViewsSpacing.inner),
             
-            self.factImageView.widthAnchor.constraint(equalTo: detailContainerView.widthAnchor, multiplier: ViewSizeMultiplier._default, constant: -2*ViewsSpacing.inner),
+            self.factImageView.widthAnchor.constraint(equalTo: detailContainerView.widthAnchor, multiplier: ViewSizeRatios._default, constant: -2*ViewsSpacing.inner),
             //Title label constraints
             self.titleLabel.leadingAnchor.constraint(equalTo: detailContainerView.leadingAnchor, constant: ViewsSpacing.inner),
             self.titleLabel.trailingAnchor.constraint(equalTo: detailContainerView.trailingAnchor, constant: -ViewsSpacing.inner),
@@ -92,11 +92,13 @@ class FactsRowsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //Prepared the FactsRowsTableViewCell with provided data
     func prepareTableViewCellWith(factData: Rows) {
         self.factsRowsTableViewCellVM = FactsRowsTableViewCellViewModel(factRow: factData)
         self.setUpUI()
     }
     
+    //Customizes the factsrows tableview cell
     func setUpUI(){
         //When there is not data, am showing the custom message
         if self.factsRowsTableViewCellVM.noDataAvaiable{
@@ -115,7 +117,7 @@ class FactsRowsTableViewCell: UITableViewCell {
             self.factImageView.sd_setShowActivityIndicatorView(true)
             self.factImageView.sd_setIndicatorStyle(.gray)
             self.factImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "imageNotFound"), options: .queryDataWhenInMemory)
-            //deactiving image height and bottom sapce constaints and adding new constraints
+            //Deactivating image height and bottom sapce constaints and adding new constraints
             self.imageViewHeight.isActive = false
             self.imageViewBottomSpace.isActive = false
             self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalTo: factImageView.widthAnchor, multiplier: ViewSizeRatios.image)
@@ -123,7 +125,7 @@ class FactsRowsTableViewCell: UITableViewCell {
             NSLayoutConstraint.activate([self.imageViewHeight, self.imageViewBottomSpace])
         }
         else{
-            //deactiving image height and bottom sapce constaints and adding new constraints
+            //Deactivating image height and bottom sapce constaints and adding new constraints
             self.imageViewHeight.isActive = false
             self.imageViewBottomSpace.isActive = false
             self.imageViewHeight = self.factImageView.heightAnchor.constraint(equalToConstant: ViewsSpacing.zero)
