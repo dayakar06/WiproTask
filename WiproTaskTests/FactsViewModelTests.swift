@@ -79,7 +79,6 @@ class FactsViewModelTests: XCTestCase {
         
         XCTAssertEqual(factsViewModel.numberOfCells, facts.rows?.count )
         wait(for: [expect], timeout: 1.0)
-        
     }
     
     //Used to check the fact title
@@ -87,10 +86,10 @@ class FactsViewModelTests: XCTestCase {
         self.fetchFactsFinished()
         let cellRow = 2
         
-        let testPhoto = mockAPIHelper.facts.rows?[cellRow]
+        let testFactRow = mockAPIHelper.facts.rows?[cellRow]
         let factRow = factsViewModel.valueAtIndex(cellRow)
         
-        XCTAssertEqual(testPhoto?.title, factRow?.title)
+        XCTAssertEqual(testFactRow?.title, factRow?.title)
     }
     
     //Used to check the fact description

@@ -27,6 +27,10 @@ class NetworkTests: XCTestCase {
     
     //Used to check the URL used for API call
     func testCheckAPIWithExpectedURL() {
+        if !apiCallHandler.reachability.isReachable{
+            XCTFail(CustomMessages.noInternet)
+            return
+        }
         let headers = ["Content-Type": "application/json"]
         
         apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, data, message) in}
@@ -36,13 +40,13 @@ class NetworkTests: XCTestCase {
     
     //Used to check the reponse from server
     func testAPIResponseCode() {
+        if !apiCallHandler.reachability.isReachable{
+            XCTFail(CustomMessages.noInternet)
+            return
+        }
         let headers = ["Content-Type": "application/json"]
         let responseExpectation = expectation(description: "error")
         var resonseReceived = false
-        guard let internetStatus : Bool = Reachability()?.isReachable, internetStatus else{
-            XCTFail("Internet connection is not available")
-            return
-        }
         
         apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, data, message) in
             if status{
@@ -57,13 +61,13 @@ class NetworkTests: XCTestCase {
     
     //Used to check the facts title in API reponse.
     func testAPIReturingingTitle() {
+        if !apiCallHandler.reachability.isReachable{
+            XCTFail(CustomMessages.noInternet)
+            return
+        }
         let headers = ["Content-Type": "application/json"]
         let responseExpectation = expectation(description: "error")
         var viewTitle : String?
-        guard let internetStatus : Bool = Reachability()?.isReachable, internetStatus else{
-            XCTFail("Internet connection is not available")
-            return
-        }
         
         apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, facts, message) in
             if status{
@@ -78,13 +82,14 @@ class NetworkTests: XCTestCase {
     
     //Used to check the facts row response returning by API
     func testAPIReturingFactsRows() {
+        if !apiCallHandler.reachability.isReachable{
+            XCTFail(CustomMessages.noInternet)
+            return
+        }
+        
         let headers = ["Content-Type": "application/json"]
         let errorExpectation = expectation(description: "error")
         var factsRows : [Rows]?
-        guard let internetStatus : Bool = Reachability()?.isReachable, internetStatus else{
-            XCTFail("Internet connection is not available")
-            return
-        }
         
         apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, facts, message) in
             if status{
@@ -100,13 +105,13 @@ class NetworkTests: XCTestCase {
     
     //Used to check expected facts number rows return from API call.
     func testAPIReturingExpectedFacrsRows() {
+        if !apiCallHandler.reachability.isReachable{
+            XCTFail(CustomMessages.noInternet)
+            return
+        }
         let headers = ["Content-Type": "application/json"]
         let errorExpectation = expectation(description: "error")
         var factsRows : [Rows]?
-        guard let internetStatus : Bool = Reachability()?.isReachable, internetStatus else{
-            XCTFail("Internet connection is not available")
-            return
-        }
         
         apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, facts, message) in
             if status{

@@ -16,13 +16,14 @@
 		6B4B344E23AA755600F7723D /* FactsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4B344D23AA755600F7723D /* FactsViewModelTests.swift */; };
 		6B4B345023AA763B00F7723D /* FactsReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4B344F23AA763B00F7723D /* FactsReponse.swift */; };
 		6B4B345223AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4B345123AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift */; };
+		6B4B345623AAA07D00F7723D /* FactViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4B345523AAA07C00F7723D /* FactViewControllerTests.swift */; };
 		6BD116E22396C98C005F7A4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E12396C98C005F7A4E /* AppDelegate.swift */; };
 		6BD116E42396C98C005F7A4E /* FactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD116E32396C98C005F7A4E /* FactsViewController.swift */; };
 		6BD116EF2396C991005F7A4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD116ED2396C991005F7A4E /* LaunchScreen.storyboard */; };
 		6BD1171A2396CB31005F7A4E /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD117192396CB31005F7A4E /* APIHelper.swift */; };
 		6BD1171C2396CBA7005F7A4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1171B2396CBA7005F7A4E /* Constants.swift */; };
 		6BD1171E2396CD81005F7A4E /* Facts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1171D2396CD81005F7A4E /* Facts.swift */; };
-		6BD117202396CE03005F7A4E /* UIViewController+Expentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1171F2396CE03005F7A4E /* UIViewController+Expentions.swift */; };
+		6BD117202396CE03005F7A4E /* UIViewController+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1171F2396CE03005F7A4E /* UIViewController+UIAlertController.swift */; };
 		6BD117222396E3F3005F7A4E /* FactsRowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD117212396E3F3005F7A4E /* FactsRowsTableViewCell.swift */; };
 		6BFCCDF423995E6E006BA177 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFCCDF323995E6E006BA177 /* NetworkTests.swift */; };
 		8A95A343B84134902C94D143 /* Pods_WiproTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D185AA5CFCBAAFBC9A3EF864 /* Pods_WiproTask.framework */; };
@@ -51,6 +52,7 @@
 		6B4B344D23AA755600F7723D /* FactsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsViewModelTests.swift; sourceTree = "<group>"; };
 		6B4B344F23AA763B00F7723D /* FactsReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsReponse.swift; sourceTree = "<group>"; };
 		6B4B345123AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsRowsTableViewCellViewModelTests.swift; sourceTree = "<group>"; };
+		6B4B345523AAA07C00F7723D /* FactViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactViewControllerTests.swift; sourceTree = "<group>"; };
 		6BD116DE2396C98C005F7A4E /* WiproTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiproTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD116E12396C98C005F7A4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BD116E32396C98C005F7A4E /* FactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewController.swift; sourceTree = "<group>"; };
@@ -59,7 +61,7 @@
 		6BD117192396CB31005F7A4E /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		6BD1171B2396CBA7005F7A4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6BD1171D2396CD81005F7A4E /* Facts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facts.swift; sourceTree = "<group>"; };
-		6BD1171F2396CE03005F7A4E /* UIViewController+Expentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Expentions.swift"; sourceTree = "<group>"; };
+		6BD1171F2396CE03005F7A4E /* UIViewController+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIAlertController.swift"; sourceTree = "<group>"; };
 		6BD117212396E3F3005F7A4E /* FactsRowsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsRowsTableViewCell.swift; sourceTree = "<group>"; };
 		6BFCCDF323995E6E006BA177 /* NetworkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		D185AA5CFCBAAFBC9A3EF864 /* Pods_WiproTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WiproTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 				6BFCCDF323995E6E006BA177 /* NetworkTests.swift */,
 				6B4B344D23AA755600F7723D /* FactsViewModelTests.swift */,
 				6B4B345123AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift */,
+				6B4B345523AAA07C00F7723D /* FactViewControllerTests.swift */,
 				6B4A22BA23982AB000A247B8 /* Info.plist */,
 			);
 			path = WiproTaskTests;
@@ -172,7 +175,7 @@
 		6BD117242396FC3D005F7A4E /* Extenstions */ = {
 			isa = PBXGroup;
 			children = (
-				6BD1171F2396CE03005F7A4E /* UIViewController+Expentions.swift */,
+				6BD1171F2396CE03005F7A4E /* UIViewController+UIAlertController.swift */,
 				6B3FDB4223A940E200D31EC1 /* UIViewController+MBProgressHud.swift */,
 			);
 			path = Extenstions;
@@ -348,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B4B345623AAA07D00F7723D /* FactViewControllerTests.swift in Sources */,
 				6BFCCDF423995E6E006BA177 /* NetworkTests.swift in Sources */,
 				6B4B344E23AA755600F7723D /* FactsViewModelTests.swift in Sources */,
 				6B4B345223AA8E7700F7723D /* FactsRowsTableViewCellViewModelTests.swift in Sources */,
@@ -369,7 +373,7 @@
 				6BD116E42396C98C005F7A4E /* FactsViewController.swift in Sources */,
 				6BD116E22396C98C005F7A4E /* AppDelegate.swift in Sources */,
 				6B4A22D22398455D00A247B8 /* Reachability.swift in Sources */,
-				6BD117202396CE03005F7A4E /* UIViewController+Expentions.swift in Sources */,
+				6BD117202396CE03005F7A4E /* UIViewController+UIAlertController.swift in Sources */,
 				6BD117222396E3F3005F7A4E /* FactsRowsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

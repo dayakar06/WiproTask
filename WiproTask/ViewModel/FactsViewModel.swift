@@ -68,11 +68,6 @@ class FactsViewModel{
         self.factsApiCalling = true
         self.removeAllFacts()
         //Checking the internet connectivity
-        if !reachability.isReachable{
-            self.alertMessage = CustomMessages.noInternet
-            self.factsApiCalling = false
-            return
-        }
         apiHelper.codableGetRequestWith(apiName: APIs.facts, headers: ["Content-Type": "application/json"]) { [weak self] (status, facts, message) in
             self?.factsApiCalling = false
             //On susccessful api call reponse paring the data.

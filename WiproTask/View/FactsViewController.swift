@@ -30,10 +30,8 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }()
     //To prevent API calls continuously...
     var factsApiCalling = false
-    //Refreshcontroler to add
+    //Refreshcontroler for pull to refresh data
     var dataRefreshControl: UIRefreshControl?
-    //Reachablitily to check the internet connection
-    let reachability = Reachability()!
     
     //MARK:- View life cycle
     override func viewDidLoad() {

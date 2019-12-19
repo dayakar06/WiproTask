@@ -17,6 +17,9 @@ class APIHelper: APIHelperProtocol{
     //API request
     var request : URLRequest!
     
+    //Reachablitily to check the internet connection
+    let reachability = Reachability()!
+    
     //MARK:- Get API call
     func codableGetRequestWith(apiName: String, headers: [String:String]?, completionHandler: @escaping (Bool, Facts?, String) -> Void) {
         #if DEBUG
@@ -26,6 +29,10 @@ class APIHelper: APIHelperProtocol{
             print("headers = ",headers ?? "")
             print("\n\n\n")
         #endif
+        if !reachability.isReachable{
+            completionHandler(false, nil, CustomMessages.noInternet)
+            return
+        }
         //Creating request
         self.request = URLRequest(url: URL(string: apiName)!)
         //Adding request type
