@@ -17,9 +17,9 @@ class FactsRowsTableViewCellViewModel{
     var factImageLink: String = ""
     
     //Initializes the FactsRowsTableViewCellViewModel
-    init(factRow: Rows) {
+    init(factRow: Rows?) {
         self.factRow = factRow
-        configureOutput()
+        self.configureOutput()
     }
     
     //Used to configure the FactsTableViewCell

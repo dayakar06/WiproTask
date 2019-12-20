@@ -32,16 +32,16 @@ class FactsRowsTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         //Customizing the view
         self.detailContainerView.backgroundColor = .white
-        self.detailContainerView.layer.cornerRadius = CornerRadios._5
+        self.detailContainerView.layer.cornerRadius = CornerRadius._default
         //Customizing the imageview
-        self.factImageView.layer.cornerRadius = CornerRadios._5
+        self.factImageView.layer.cornerRadius = CornerRadius._default
         self.factImageView.clipsToBounds = true
         //Customizing the title label
-        self.titleLabel.numberOfLines = LabelTextLines.l0
+        self.titleLabel.numberOfLines = LabelTextLines.zero
         self.titleLabel.lineBreakMode = .byWordWrapping
         self.titleLabel.font = UIFont.boldSystemFont(ofSize: FontSize.s17)
         //Customizing the description label
-        self.descriptionLabel.numberOfLines = LabelTextLines.l0
+        self.descriptionLabel.numberOfLines = LabelTextLines.zero
         self.descriptionLabel.lineBreakMode = .byWordWrapping
         //Disabling the translates autoresiging maks into constraints functionality
         self.factImageView.translatesAutoresizingMaskIntoConstraints = false

@@ -14,6 +14,10 @@ struct APIs {
     static let facts = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 }
 
+struct HTTPHeaders {
+    static let contentTypeJson = ["Content-Type": "application/json"]
+}
+
 //Custom messages
 struct CustomMessages {
     static let empty = ""
@@ -34,13 +38,12 @@ struct ViewsSpacing{
     static let outer : CGFloat = 10.0
 }
 
-//Corner radios
-struct CornerRadios {
-    static let _5 : CGFloat = 5.0
+//Corner radius
+struct CornerRadius {
+    static let _default : CGFloat = 5.0
 }
 
-
-//View size rations
+//View size ratios
 struct ViewSizeRatios{
     static let image : CGFloat = 2.1/4.0
     static let _default : CGFloat = 1.0
@@ -49,11 +52,18 @@ struct ViewSizeRatios{
 //Fonts sizes
 struct FontSize{
     static let s26 : CGFloat = 26.0
+    static let s20 : CGFloat = 20.0
     static let s17 : CGFloat = 17.0
     static let s15 : CGFloat = 15.0
 }
 
 //Label text lines
 struct LabelTextLines {
-    static let l0 = 0
+    static let zero = 0
 }
+
+//Test expectation time interval
+struct TestExpectionTime {
+    static let short = TimeInterval.init(5.0)
+}
+

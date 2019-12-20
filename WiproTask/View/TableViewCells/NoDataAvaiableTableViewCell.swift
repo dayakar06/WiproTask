@@ -21,9 +21,9 @@ class NoDataAvaiableTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         //Customizing the details container view
         self.detailContainerView.backgroundColor = .white
-        self.detailContainerView.layer.cornerRadius = CornerRadios._5
+        self.detailContainerView.layer.cornerRadius = CornerRadius._default
         //Customizing the status lebel
-        self.statusLabel.numberOfLines = LabelTextLines.l0
+        self.statusLabel.numberOfLines = LabelTextLines.zero
         self.statusLabel.textAlignment = .center
         self.statusLabel.lineBreakMode = .byWordWrapping
         self.statusLabel.text = CustomMessages.noData

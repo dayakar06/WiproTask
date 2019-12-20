@@ -31,11 +31,10 @@ class NetworkTests: XCTestCase {
             XCTFail(CustomMessages.noInternet)
             return
         }
-        let headers = ["Content-Type": "application/json"]
         
-        apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, data, message) in}
+        apiCallHandler.codableGetRequestWith(apiName: APIs.facts) { (status, data, message) in}
         
-        XCTAssertEqual(apiCallHandler.request.url?.absoluteString, APIs.facts)
+        XCTAssertEqual(apiCallHandler.request.url?.absoluteString, APIs.facts, "Link should match")
     }
     
     //Used to check the reponse from server
@@ -44,83 +43,82 @@ class NetworkTests: XCTestCase {
             XCTFail(CustomMessages.noInternet)
             return
         }
-        let headers = ["Content-Type": "application/json"]
-        let responseExpectation = expectation(description: "error")
+        
+        let responseExpectation = expectation(description: "Facts reponse status")
         var resonseReceived = false
         
-        apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, data, message) in
+        apiCallHandler.codableGetRequestWith(apiName: APIs.facts) { (status, data, message) in
             if status{
                 resonseReceived = true
             }
             responseExpectation.fulfill()
         }
-        wait(for: [responseExpectation], timeout: TimeInterval.init(5.0))
+        wait(for: [responseExpectation], timeout: TestExpectionTime.short)
         
-        XCTAssertTrue(resonseReceived)
+        XCTAssertTrue(resonseReceived, "Facts API call should receive a response")
     }
     
     //Used to check the facts title in API reponse.
-    func testAPIReturingingTitle() {
+    func testAPIReturningTitle() {
         if !apiCallHandler.reachability.isReachable{
             XCTFail(CustomMessages.noInternet)
             return
         }
-        let headers = ["Content-Type": "application/json"]
-        let responseExpectation = expectation(description: "error")
+        
+        let responseExpectation = expectation(description: "Facts title")
         var viewTitle : String?
         
-        apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, facts, message) in
+        apiCallHandler.codableGetRequestWith(apiName: APIs.facts) { (status, facts, message) in
             if status{
                 viewTitle = facts?.title ?? ""
                 responseExpectation.fulfill()
             }
         }
-        wait(for: [responseExpectation], timeout: TimeInterval.init(2.0))
+        wait(for: [responseExpectation], timeout: TestExpectionTime.short)
         
         XCTAssertNotNil(viewTitle, "View title should return by API")
     }
     
     //Used to check the facts row response returning by API
-    func testAPIReturingFactsRows() {
+    func testAPIReturingFactsRowsData() {
         if !apiCallHandler.reachability.isReachable{
             XCTFail(CustomMessages.noInternet)
             return
         }
-        
-        let headers = ["Content-Type": "application/json"]
-        let errorExpectation = expectation(description: "error")
+    
+        let responseExpectation = expectation(description: "Facts rows details")
         var factsRows : [Rows]?
         
-        apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, facts, message) in
+        apiCallHandler.codableGetRequestWith(apiName: APIs.facts) { (status, facts, message) in
             if status{
                 factsRows = facts?.rows
-                errorExpectation.fulfill()
+                responseExpectation.fulfill()
             }
         }
-        wait(for: [errorExpectation], timeout: TimeInterval.init(2.0))
+        wait(for: [responseExpectation], timeout: TestExpectionTime.short)
         
         XCTAssertNotNil(factsRows, "facts rows should return by API")
         XCTAssertTrue((factsRows?.count ?? 0)>0, "facts data contained 1 or more then one facts")
     }
     
     //Used to check expected facts number rows return from API call.
-    func testAPIReturingExpectedFacrsRows() {
+    func testAPIReturingFactsRowsCount() {
         if !apiCallHandler.reachability.isReachable{
             XCTFail(CustomMessages.noInternet)
             return
         }
-        let headers = ["Content-Type": "application/json"]
-        let errorExpectation = expectation(description: "error")
+        
+        let responseExpectation = expectation(description: "Facts rows count")
         var factsRows : [Rows]?
         
-        apiCallHandler.codableGetRequestWith(apiName: APIs.facts, headers: headers) { (status, facts, message) in
+        apiCallHandler.codableGetRequestWith(apiName: APIs.facts) { (status, facts, message) in
             if status{
                 factsRows = facts?.rows
-                errorExpectation.fulfill()
+                responseExpectation.fulfill()
             }
         }
         
-        wait(for: [errorExpectation], timeout: TimeInterval.init(2.0))
+        wait(for: [responseExpectation], timeout: TestExpectionTime.short)
         XCTAssertTrue((factsRows?.count ?? 0) == 14, "API not returned expected records 14")
     }
 }

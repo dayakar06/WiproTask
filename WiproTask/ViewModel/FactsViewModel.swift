@@ -19,7 +19,7 @@ class FactsViewModel{
     var updateLoadingStatusClosure: (()->())?
     
     //Stores and updates the facts data/details to the FactViewController
-    private var facts: Facts = Facts(){
+    private var facts: Facts?{
         didSet {
             self.reloadTableViewClosure?()
         }
@@ -41,12 +41,12 @@ class FactsViewModel{
     
     //Return the FactsViewControler view title
     var factsTitle: String? {
-        return facts.title ?? ""
+        return facts?.title ?? ""
     }
     
     //Returns the number of facts
     var numberOfCells: Int {
-        guard let factsCount = self.facts.rows?.count else{
+        guard let factsCount = self.facts?.rows?.count else{
             return 0
         }
         return factsCount
@@ -55,24 +55,24 @@ class FactsViewModel{
     //Reachablitily to check the internet connection
     let reachability = Reachability()!
     
-    init( apiHelper: APIHelperProtocol = APIHelper()) {
+    init(apiHelper: APIHelperProtocol = APIHelper()) {
         self.apiHelper = apiHelper
     }
     
     //TO fetch the data from server
     func fetchFactsData() {
-        //Stoping from calling the API incase api calling currently.
+        //Prevents the API calls, in case of currently API is calling.
         if self.factsApiCalling{
             return
         }
         self.factsApiCalling = true
         self.removeAllFacts()
         //Checking the internet connectivity
-        apiHelper.codableGetRequestWith(apiName: APIs.facts, headers: ["Content-Type": "application/json"]) { [weak self] (status, facts, message) in
+        self.apiHelper.codableGetRequestWith(apiName: APIs.facts, headers: HTTPHeaders.contentTypeJson) { [weak self] (status, facts, message) in
             self?.factsApiCalling = false
             //On susccessful api call reponse paring the data.
             if status{
-                self?.facts = facts ?? Facts()
+                self?.facts = facts ?? nil
             }
             //On API call failure showing the error message
             else{
@@ -83,12 +83,12 @@ class FactsViewModel{
     
     //Resets the facts data
     func removeAllFacts(){
-        self.facts = Facts()
+        self.facts = nil
         self.reloadTableViewClosure?()
     }
     
     //Provides the facts details at given inxex
     func valueAtIndex(_ index:Int) -> Rows?{
-        return self.facts.rows?[index] ?? nil
+        return self.facts?.rows?[index] ?? nil
     }
 }

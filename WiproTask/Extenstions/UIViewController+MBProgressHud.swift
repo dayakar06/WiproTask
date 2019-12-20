@@ -15,9 +15,14 @@ extension UIViewController {
         Indicator.label.text = title
         Indicator.isUserInteractionEnabled = false
         Indicator.detailsLabel.text = Description
-        Indicator.show(animated: true)
+        DispatchQueue.main.async{
+            Indicator.show(animated: true)
+        }
     }
+    
     func hideIndicator() {
-        MBProgressHUD.hide(for: self.view, animated: true)
+        DispatchQueue.main.async{
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
     }
 }

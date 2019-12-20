@@ -21,7 +21,7 @@ class APIHelper: APIHelperProtocol{
     let reachability = Reachability()!
     
     //MARK:- Get API call
-    func codableGetRequestWith(apiName: String, headers: [String:String]?, completionHandler: @escaping (Bool, Facts?, String) -> Void) {
+    func codableGetRequestWith(apiName: String, headers: [String:String]? = ["Content-Type": "application/json"], completionHandler: @escaping (Bool, Facts?, String) -> Void) {
         #if DEBUG
             print("\n\n\n")
             print("GET")
@@ -29,6 +29,7 @@ class APIHelper: APIHelperProtocol{
             print("headers = ",headers ?? "")
             print("\n\n\n")
         #endif
+        //Checks the internet connection
         if !reachability.isReachable{
             completionHandler(false, nil, CustomMessages.noInternet)
             return
@@ -41,8 +42,6 @@ class APIHelper: APIHelperProtocol{
         if headers!.count > 0{
             self.request.allHTTPHeaderFields = headers
         }
-        //Adding request time
-        self.request.timeoutInterval = 120
         //Creating the dataTask using the URLSession, requst process with given data.
         URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             if error != nil || data == nil {

@@ -32,11 +32,11 @@ class FactsViewModelTests: XCTestCase {
     }
     
     //Used to check the API call success case
-    func testFetchFactsDataAPICallSuccess() {
-        mockAPIHelper.facts = Facts()
+    func testFetchFactsDetailsAPICallSuccess() {
+        mockAPIHelper.facts = self.facts
         factsViewModel.fetchFactsData()
         
-        XCTAssert(mockAPIHelper!.isFetchFactsDataAPICalled)
+        XCTAssert(mockAPIHelper!.isFetchFactsDataAPICalled, "Facts API should have called")
     }
     
     //Used to check the API call failing case
@@ -46,11 +46,11 @@ class FactsViewModelTests: XCTestCase {
         factsViewModel.fetchFactsData()
         mockAPIHelper.fetchFail(error: error )
         
-        XCTAssertEqual(factsViewModel.alertMessage, error )
+        XCTAssertEqual(factsViewModel.alertMessage, error, "Facts API call should fail with error")
     }
     
     //Used to check the loader funtionality
-    func testCheckTheLoadingStatus() {
+    func testAPICallStatus() {
         var loadingStatus = false
         let expect = XCTestExpectation(description: "Loading status updated")
         factsViewModel.updateLoadingStatusClosure = { [weak self] in
@@ -59,16 +59,16 @@ class FactsViewModelTests: XCTestCase {
         }
         
         factsViewModel.fetchFactsData()
-        XCTAssertTrue( loadingStatus )
+        XCTAssertTrue(loadingStatus, "Facts API shuold be loading")
         
         mockAPIHelper!.fetchSuccess()
-        XCTAssertFalse( loadingStatus )
+        XCTAssertFalse(loadingStatus, "Facts API shuold not be loading")
+        wait(for: [expect], timeout: TestExpectionTime.short)
     }
     
     //Used to check the rows count for dummy data
     func testNumberOfRowsCount() {
-        let facts = loadFactsData()
-        mockAPIHelper.facts = facts
+        mockAPIHelper.facts = self.facts
         let expect = XCTestExpectation(description: "numberOfCellsCunt")
         factsViewModel.reloadTableViewClosure = { () in
             expect.fulfill()
@@ -77,51 +77,51 @@ class FactsViewModelTests: XCTestCase {
         factsViewModel.fetchFactsData()
         mockAPIHelper.fetchSuccess()
         
-        XCTAssertEqual(factsViewModel.numberOfCells, facts.rows?.count )
-        wait(for: [expect], timeout: 1.0)
+        XCTAssertEqual(factsViewModel.numberOfCells, facts?.rows?.count, "Fact rows should match")
+        wait(for: [expect], timeout: TestExpectionTime.short)
     }
     
     //Used to check the fact title
-    func testCheckFactsRowTitle() {
+    func testFactsRowTitle() {
         self.fetchFactsFinished()
         let cellRow = 2
         
         let testFactRow = mockAPIHelper.facts.rows?[cellRow]
         let factRow = factsViewModel.valueAtIndex(cellRow)
         
-        XCTAssertEqual(testFactRow?.title, factRow?.title)
+        XCTAssertEqual(testFactRow?.title, factRow?.title, "Fact title should match")
     }
     
     //Used to check the fact description
-    func testCheckFactsRowDescription() {
+    func testFactDescription() {
         self.fetchFactsFinished()
         let cellRow = 2
         
         let testPhoto = mockAPIHelper.facts.rows?[cellRow]
         let factRow = factsViewModel.valueAtIndex(cellRow)
         
-        XCTAssertEqual(testPhoto?.description, factRow?.description)
+        XCTAssertEqual(testPhoto?.description, factRow?.description, "Fact description should match")
     }
 }
 
 //Extenstion used to update/Fetch the static data from local facts data
 extension FactsViewModelTests{
-    func loadFactsData() -> Facts{
-        guard let factsData = FactsReponse.factStringData.data(using: .utf8), let facts : Facts = try? JSONDecoder().decode(Facts.self, from: factsData) else{
-            return Facts()
+    var facts : Facts?{
+        guard let facts : Facts = try? JSONDecoder().decode(Facts.self, from: FactsReponse.factData) else{
+            return nil
         }
         return facts
     }
     
     private func fetchFactsFinished() {
-        mockAPIHelper.facts = loadFactsData()
+        mockAPIHelper.facts = self.facts
         factsViewModel.fetchFactsData()
         mockAPIHelper.fetchSuccess()
     }
 }
 
 
-//Used to mock the API calls
+//Used to mock test the API calls
 class MockAPIHelper: APIHelperProtocol {
     var isFetchFactsDataAPICalled = false
     var facts: Facts!

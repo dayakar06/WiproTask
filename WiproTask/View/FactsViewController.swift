@@ -28,8 +28,6 @@ class FactsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     lazy var factsViewModel: FactsViewModel = {
         return FactsViewModel()
     }()
-    //To prevent API calls continuously...
-    var factsApiCalling = false
     //Refreshcontroler for pull to refresh data
     var dataRefreshControl: UIRefreshControl?
     

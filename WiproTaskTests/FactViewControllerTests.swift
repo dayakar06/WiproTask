@@ -16,9 +16,11 @@ class FactViewControllerTests: XCTestCase {
     var factsViewModel : FactsViewModel!
     var mockAPIHelper : MockAPIHelper!
     
+    //SUT setup
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
+        
         self.mockAPIHelper = MockAPIHelper()
         self.factsViewModel = FactsViewModel(apiHelper: mockAPIHelper)
         self.viewController = FactsViewController()
@@ -26,6 +28,7 @@ class FactViewControllerTests: XCTestCase {
         self.viewController.viewDidLoad()
     }
     
+    //Releasing the SUT
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         self.viewController = nil
@@ -37,21 +40,21 @@ class FactViewControllerTests: XCTestCase {
     
     //To check the view controller creation
     func testHasController(){
-        XCTAssertNotNil(self.viewController)
+        XCTAssertNotNil(self.viewController, "Fact view controller sould not be nil")
     }
     
     //To check the tableview creation
     func testHasATableView() {
-        XCTAssertNotNil(self.viewController.tableView)
+        XCTAssertNotNil(self.viewController.tableView, "Fact tableview sould not be nil")
     }
     
     //TO check the tableview delegate assign status
     func testTableViewHasDelegate() {
-        XCTAssertNotNil(self.viewController.tableView.delegate)
+        XCTAssertNotNil(self.viewController.tableView.delegate, "Fact tableview delegate sould not be nil")
     }
     
     func testTableViewHasDataSource() {
-        XCTAssertNotNil(self.viewController.tableView.dataSource)
+        XCTAssertNotNil(self.viewController.tableView.dataSource, "Fact tableview datasource sould not be nil")
     }
     
     //To check the default NavigationViewController title
@@ -61,7 +64,7 @@ class FactViewControllerTests: XCTestCase {
     
     //To check the facts view controller title
     func testFactsViewControllerTitle() {
-        let facts = emptyFactsData()
+        let facts = emptyFactsDetalis()
         mockAPIHelper.facts = facts
         let expect = XCTestExpectation(description: "FactsViewController title")
         viewController.factsViewModel.reloadTableViewClosure = { () in
@@ -71,7 +74,7 @@ class FactViewControllerTests: XCTestCase {
         factsViewModel.fetchFactsData()
         mockAPIHelper.fetchSuccess()
         wait(for: [expect], timeout: 2.0)
-        XCTAssertEqual(self.viewController.title, mockAPIHelper.facts.title)
+        XCTAssertEqual(self.viewController.title, mockAPIHelper.facts.title, "Fact view controller title sould match")
     }
     
     //To check the tableview  rows count when facts data not available, here it should return 1 row to show the NoDataAvaiableTableViewCell
@@ -89,7 +92,7 @@ class FactViewControllerTests: XCTestCase {
         
         self.fetchFactsFactsData()
         
-        XCTAssertEqual(self.viewController.tableView(self.viewController.tableView, numberOfRowsInSection: section), mockAPIHelper.facts.rows?.count)
+        XCTAssertEqual(self.viewController.tableView(self.viewController.tableView, numberOfRowsInSection: section), mockAPIHelper.facts.rows?.count, "Fact rows count sould not be available")
     }
     
     //To check the returning tableview cell when facts data not available
@@ -134,25 +137,28 @@ class FactViewControllerTests: XCTestCase {
 
 //Extenstion used to Fetch the static facts data
 extension FactViewControllerTests{
-    func factsData() -> Facts{
-        guard let factsData = FactsReponse.factStringData.data(using: .utf8), let facts : Facts = try? JSONDecoder().decode(Facts.self, from: factsData) else{
-            return Facts()
+    func factsDetails() -> Facts?{
+        guard let facts : Facts = try? JSONDecoder().decode(Facts.self, from: FactsReponse.factData) else{
+            return nil
         }
         return facts
     }
     
-    func emptyFactsData() -> Facts{
-        return Facts()
+    func emptyFactsDetalis() -> Facts?{
+        guard let facts : Facts = try? JSONDecoder().decode(Facts.self, from: FactsReponse.emptyFactsData) else{
+            return nil
+        }
+        return facts
     }
     
     private func fetchFactsFactsData() {
-        mockAPIHelper.facts = factsData()
+        mockAPIHelper.facts = factsDetails()
         factsViewModel.fetchFactsData()
         mockAPIHelper.fetchSuccess()
     }
     
     private func fetchEmptyFactsFactsData() {
-        mockAPIHelper.facts = emptyFactsData()
+        mockAPIHelper.facts = emptyFactsDetalis()
         factsViewModel.fetchFactsData()
         mockAPIHelper.fetchSuccess()
     }
