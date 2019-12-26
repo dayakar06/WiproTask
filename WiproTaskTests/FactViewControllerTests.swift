@@ -74,7 +74,7 @@ class FactViewControllerTests: XCTestCase {
         factsViewModel.fetchFactsData()
         mockAPIHelper.fetchSuccess()
         wait(for: [expect], timeout: 2.0)
-        XCTAssertEqual(self.viewController.title, mockAPIHelper.facts.title, "Fact view controller title sould match")
+        XCTAssertEqual(self.viewController.title ?? "", mockAPIHelper.facts.title ?? "", "Fact view controller title sould match")
     }
     
     //To check the tableview  rows count when facts data not available, here it should return 1 row to show the NoDataAvaiableTableViewCell
